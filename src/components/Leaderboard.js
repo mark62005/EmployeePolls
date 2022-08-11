@@ -23,7 +23,7 @@ const Leaderboard = ({ users }) => {
 };
 
 Leaderboard.propTypes = {
-
+    users: PropTypes.array.isRequired,
 };
 
 const mapStateToProps = ({ users }) => {
