@@ -8,12 +8,12 @@ export function formatQuestion(question, author, authedUser, users) {
     const { id, timestamp, optionOne, optionTwo } = question;
 
     return {
-        id,
+        qid: id,
         timestamp,
         author: author.id,
         avatar: author.avatarURL,
-        optionOne: optionOne.text,
-        optionTwo: optionTwo.text,
+        optionOne,
+        optionTwo,
         voteCount: optionOne.votes.length + optionTwo.votes.length,
         userCount: Object.keys(users).length,
         hasVoted: optionOne.votes.includes(authedUser) || optionTwo.votes.includes(authedUser),

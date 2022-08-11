@@ -2,9 +2,9 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { formatDate, formatQuestion } from "../utils/helpers";
 
-const QuestionCard = ({ authedUser, question, dispatch }) => {
+const QuestionCard = ({ question }) => {
     const {
-        id,
+        qid,
         timestamp,
         author,
         avatar,
@@ -23,8 +23,6 @@ const QuestionCard = ({ authedUser, question, dispatch }) => {
                 {/* TODO: redirect to poll page */ }
                 <button className="show-btn">Show</button>
             </div>
-
-
         </div>
     );
 };

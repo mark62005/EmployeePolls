@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import LoadingBar from "react-redux-loading-bar";
 import { handleInitialData } from "../actions/shared";
 import Dashboard from "./Dashboard";
-import QuestionCard from "./QuestionCard";
+import QuestionPage from "./QuestionPage";
 
 const App = ({ dispatch, loading }) => {
     useEffect(() => {
@@ -14,7 +14,7 @@ const App = ({ dispatch, loading }) => {
     return (
         <div className="App">
             <LoadingBar />
-            { loading === false ? <Dashboard /> : null }
+            { loading === false ? <QuestionPage qid={ "loxhs1bqm25b708cmbf3g" } /> : null }
         </div>
     );
 };
