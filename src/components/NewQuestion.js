@@ -1,10 +1,13 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { connect } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { OPTION_ONE, OPTION_TWO } from "../utils/helpers";
 import { handleAddQuestion } from "../actions/shared";
 
 const NewQuestion = ({ dispatch }) => {
+    const navigate = useNavigate();
+
     const [ optionOneText, setOptionOneText ] = useState("");
     const [ optionTwoText, setOptionTwoText ] = useState("");
 
@@ -22,15 +25,11 @@ const NewQuestion = ({ dispatch }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        // TODO: add new question to database
-        console.log(optionOneText);
-        console.log(optionTwoText);
-
         dispatch(handleAddQuestion(optionOneText, optionTwoText));
-
-        // TODO: redirect to "/"
         setOptionOneText("");
         setOptionTwoText("");
+
+        navigate("/");
     };
 
     return (
@@ -50,7 +49,7 @@ const NewQuestion = ({ dispatch }) => {
 };
 
 NewQuestion.propTypes = {
-
+    dispatch: PropTypes.func.isRequired,
 };
 
 export default connect()(NewQuestion);
