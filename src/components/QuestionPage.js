@@ -7,6 +7,7 @@ import {
     useNavigate,
     useParams,
 } from "react-router-dom";
+import { OPTION_ONE, OPTION_TWO } from "../utils/helpers";
 
 // https://reactrouter.com/docs/en/v6/getting-started/faq
 function withRouter(Component) {
@@ -26,9 +27,6 @@ function withRouter(Component) {
 }
 
 const QuestionPage = ({ authedUser, question, dispatch }) => {
-    const OPTION_ONE = "optionOne";
-    const OPTION_TWO = "optionTwo";
-
     const {
         qid,
         author,

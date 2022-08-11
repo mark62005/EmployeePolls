@@ -6,6 +6,7 @@ import LoadingBar from "react-redux-loading-bar";
 import { handleInitialData } from "../actions/shared";
 import Dashboard from "./Dashboard";
 import QuestionPage from "./QuestionPage";
+import NewQuestion from "./NewQuestion";
 import Nav from "./Nav";
 
 const App = ({ dispatch, loading }) => {
@@ -23,6 +24,7 @@ const App = ({ dispatch, loading }) => {
                         <Routes>
                             <Route exact path="/" element={ <Dashboard /> } />
                             <Route path="/question/:id" element={ <QuestionPage /> } />
+                            <Route path="/new" element={ <NewQuestion /> } />
                         </Routes>
                     )
                 }

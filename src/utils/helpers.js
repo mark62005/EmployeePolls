@@ -1,3 +1,6 @@
+export const OPTION_ONE = "optionOne";
+export const OPTION_TWO = "optionTwo";
+
 export function formatDate(timestamp) {
     const d = new Date(timestamp);
     const time = d.toLocaleTimeString('en-US');
