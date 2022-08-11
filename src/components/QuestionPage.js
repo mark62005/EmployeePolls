@@ -2,6 +2,28 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { formatQuestion } from "../utils/helpers";
 import { handleVoteQuestion } from "../actions/questions";
+import {
+    useLocation,
+    useNavigate,
+    useParams,
+} from "react-router-dom";
+
+// https://reactrouter.com/docs/en/v6/getting-started/faq
+function withRouter(Component) {
+    function ComponentWithRouterProp(props) {
+        let location = useLocation();
+        let navigate = useNavigate();
+        let params = useParams();
+        return (
+            <Component
+                { ...props }
+                router={ { location, navigate, params } }
+            />
+        );
+    }
+
+    return ComponentWithRouterProp;
+}
 
 const QuestionPage = ({ authedUser, question, dispatch }) => {
     const OPTION_ONE = "optionOne";
@@ -68,8 +90,9 @@ QuestionPage.propTypes = {
     dispatch: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({ authedUser, questions, users }, { qid }) => {
-    const question = questions[ qid ];
+const mapStateToProps = ({ authedUser, questions, users }, { router }) => {
+    const { id } = router.params;
+    const question = questions[ id ];
 
     return {
         authedUser,
@@ -79,4 +102,4 @@ const mapStateToProps = ({ authedUser, questions, users }, { qid }) => {
     };
 };
 
-export default connect(mapStateToProps)(QuestionPage);
+export default withRouter(connect(mapStateToProps)(QuestionPage));

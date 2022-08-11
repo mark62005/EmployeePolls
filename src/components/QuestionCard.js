@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { formatDate, formatQuestion } from "../utils/helpers";
 
 const QuestionCard = ({ question }) => {
@@ -20,8 +21,9 @@ const QuestionCard = ({ question }) => {
             <div className="question-info">
                 <h3>{ author }</h3>
                 <p>{ formatDate(timestamp) }</p>
-                {/* TODO: redirect to poll page */ }
-                <button className="show-btn">Show</button>
+                <Link to={ `/question/${qid}` }>
+                    <button className="show-btn">Show</button>
+                </Link>
             </div>
         </div>
     );
