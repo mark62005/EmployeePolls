@@ -2,19 +2,20 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import { connect } from "react-redux";
 import { OPTION_ONE, OPTION_TWO } from "../utils/helpers";
+import { handleAddQuestion } from "../actions/shared";
 
-const NewQuestion = () => {
-    const [ optionOne, setOptionOne ] = useState("");
-    const [ optionTwo, setOptionTwo ] = useState("");
+const NewQuestion = ({ dispatch }) => {
+    const [ optionOneText, setOptionOneText ] = useState("");
+    const [ optionTwoText, setOptionTwoText ] = useState("");
 
     const handleInputChange = (e) => {
         e.preventDefault();
 
         if (e.target.name === OPTION_ONE) {
-            setOptionOne(e.target.value);
+            setOptionOneText(e.target.value);
         }
         else if (e.target.name === OPTION_TWO) {
-            setOptionTwo(e.target.value);
+            setOptionTwoText(e.target.value);
         }
     };
 
@@ -22,12 +23,14 @@ const NewQuestion = () => {
         e.preventDefault();
 
         // TODO: add new question to database
-        console.log(optionOne);
-        console.log(optionTwo);
+        console.log(optionOneText);
+        console.log(optionTwoText);
+
+        dispatch(handleAddQuestion(optionOneText, optionTwoText));
 
         // TODO: redirect to "/"
-        setOptionOne("");
-        setOptionTwo("");
+        setOptionOneText("");
+        setOptionTwoText("");
     };
 
     return (
@@ -36,11 +39,11 @@ const NewQuestion = () => {
             <h3>Create Your Own Poll</h3>
             <form onSubmit={ handleSubmit }>
                 <label id={ OPTION_ONE }>First Option</label>
-                <input name={ OPTION_ONE } value={ optionOne } placeholder="Option One" onChange={ handleInputChange } />
+                <input name={ OPTION_ONE } value={ optionOneText } placeholder="Option One" onChange={ handleInputChange } />
                 <label id={ OPTION_TWO }>Second Option</label>
-                <input name={ OPTION_TWO } value={ optionTwo } placeholder="Option Two" onChange={ handleInputChange } />
+                <input name={ OPTION_TWO } value={ optionTwoText } placeholder="Option Two" onChange={ handleInputChange } />
 
-                <button type="submit" disabled={ optionOne === "" || optionTwo === "" }>Create</button>
+                <button type="submit" disabled={ optionOneText === "" || optionTwoText === "" }>Create</button>
             </form>
         </div>
     );

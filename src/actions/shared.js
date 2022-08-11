@@ -1,7 +1,7 @@
 import { showLoading, hideLoading } from "react-redux-loading-bar";
-import { getInitialData, saveQuestionAnswer } from "../utils/api";
-import { receiveUsers, saveAnswer } from "./users";
-import { receiveQuestions, saveVote } from "./questions";
+import { getInitialData, saveQuestion, saveQuestionAnswer } from "../utils/api";
+import { receiveUsers, saveQuestionToUsers, saveAnswer } from "./users";
+import { receiveQuestions, addQuestion, saveVote } from "./questions";
 import { setAuthedUser } from "./authedUser";
 
 const AUTHED_ID = "mtsamis";
@@ -18,6 +18,27 @@ export function handleInitialData() {
                 dispatch(setAuthedUser(AUTHED_ID));
                 dispatch(hideLoading());
             });
+    };
+}
+
+export function handleAddQuestion(optionOneText, optionTwoText) {
+    return (dispatch, getState) => {
+        const { authedUser } = getState();
+
+        dispatch(showLoading());
+        return saveQuestion({
+            optionOneText,
+            optionTwoText,
+            author: authedUser,
+        })
+            .then((question) => {
+                dispatch(addQuestion(question));
+                dispatch(saveQuestionToUsers({
+                    qid: question.id,
+                    author: authedUser,
+                }));
+            })
+            .then(() => dispatch(hideLoading()));
     };
 }
 
