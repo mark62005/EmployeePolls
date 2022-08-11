@@ -7,7 +7,7 @@ const Leaderboard = ({ users }) => {
             Leaderboard
             <ul>
                 {
-                    Object.values(users).map((user) => {
+                    users.map((user) => {
                         const answeredCount = Object.keys(user.answers).length;
 
                         return (
@@ -26,8 +26,17 @@ Leaderboard.propTypes = {
 
 };
 
-const mapStateToProps = ({ users }) => ({
-    users,
-});
+const mapStateToProps = ({ users }) => {
+    const sortedUsers = Object.values(users).sort((a, b) => {
+        const answersCountOfA = Object.keys(a.answers).length;
+        const answersCountOfB = Object.keys(b.answers).length;
+
+        return (answersCountOfB + b.questions.length) - (answersCountOfA + a.questions.length);
+    });
+
+    return {
+        users: sortedUsers,
+    };
+};
 
 export default connect(mapStateToProps)(Leaderboard);
