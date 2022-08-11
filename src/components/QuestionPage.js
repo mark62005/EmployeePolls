@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { formatQuestion } from "../utils/helpers";
-import { handleVoteQuestion } from "../actions/questions";
+import { handleVoteQuestion } from "../actions/shared";
 import {
     useLocation,
     useNavigate,
