@@ -1,38 +1,36 @@
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { sortQuestionsIdByTimestamp } from "../utils/helpers";
-import QuestionCard from "./QuestionCard";
+import QuestionList from "./QuestionList";
 
-const Dashboard = ({ authedUser, newQuestionIds, doneQuestionIds, dispatch }) => {
+const Dashboard = ({ authedUser, newQuestionIds, doneQuestionIds }) => {
+    const categories = [ "new", "done" ];
+
     return (
         <div className="dashboard">
-            <div>
-                <h2>New Questions</h2>
-                <ul className="new-questions-list">
-                    { newQuestionIds.map((id) => (
-                        <li key={ id }>
-                            <QuestionCard id={ id } />
-                        </li>
-                    )) }
-                </ul>
-            </div>
-            <div>
-                <h2>Done</h2>
-                <ul className="done-questions-list">
-                    { doneQuestionIds.map((id) => (
-                        <li key={ id }>
-                            <QuestionCard id={ id } />
-                        </li>
-                    )) }
-                </ul>
-            </div>
+            {
+                categories.map((category) => (
+                    category === "new"
+                        ? <QuestionList
+                            key={ category }
+                            category={ category }
+                            questionIds={ newQuestionIds }
+                        />
+                        : <QuestionList
+                            key={ category }
+                            category={ category }
+                            questionIds={ doneQuestionIds }
+                        />
+                ))
+            }
         </div>
     );
 };
 
 Dashboard.propTypes = {
-    dispatch: PropTypes.func.isRequired,
-
+    authedUser: PropTypes.string.isRequired,
+    newQuestionIds: PropTypes.array.isRequired,
+    doneQuestionIds: PropTypes.array.isRequired,
 };
 
 function getFilteredQuestions(questions, authedUser, type) {

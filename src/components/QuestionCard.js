@@ -28,10 +28,8 @@ const QuestionCard = ({ question }) => {
 };
 
 QuestionCard.propTypes = {
-    authedUser: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
     question: PropTypes.object.isRequired,
-    dispatch: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = ({ authedUser, users, questions }, { id }) => {

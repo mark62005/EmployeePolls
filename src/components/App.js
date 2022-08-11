@@ -14,7 +14,7 @@ const App = ({ dispatch, loading }) => {
     return (
         <div className="App">
             <LoadingBar />
-            { loading === false ? <QuestionPage qid={ "loxhs1bqm25b708cmbf3g" } /> : null }
+            { loading === false ? <Dashboard /> : null }
         </div>
     );
 };
