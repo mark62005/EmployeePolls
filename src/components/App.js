@@ -1,11 +1,30 @@
-import '../css/App.css';
+import { useEffect } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import LoadingBar from "react-redux-loading-bar";
+import { handleInitialData } from "../actions/shared";
+import Dashboard from "./Dashboard";
 
-function App() {
+const App = ({ dispatch, loading }) => {
+    useEffect(() => {
+        dispatch(handleInitialData());
+    }, [ dispatch ]);
+
     return (
         <div className="App">
-            Employee Polls
+            <LoadingBar />
+            { loading === false ? <Dashboard /> : null }
         </div>
     );
-}
+};
 
-export default App;
+App.propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    loading: PropTypes.bool.isRequired,
+};
+
+const mapStateToProps = ({ authedUser }) => ({
+    loading: authedUser === null,
+});
+
+export default connect(mapStateToProps)(App);
