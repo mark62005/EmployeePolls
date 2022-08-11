@@ -1,26 +1,27 @@
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { sortQuestionsIdByTimestamp } from "../utils/helpers";
+import QuestionCard from "./QuestionCard";
 
 const Dashboard = ({ authedUser, newQuestionIds, doneQuestionIds, dispatch }) => {
     return (
         <div className="dashboard">
             <div>
-                <h3>New Questions</h3>
+                <h2>New Questions</h2>
                 <ul className="new-questions-list">
                     { newQuestionIds.map((id) => (
                         <li key={ id }>
-                            <div>New Question ID: { id }</div>
+                            <QuestionCard id={ id } />
                         </li>
                     )) }
                 </ul>
             </div>
             <div>
-                <h3>Done</h3>
+                <h2>Done</h2>
                 <ul className="done-questions-list">
                     { doneQuestionIds.map((id) => (
                         <li key={ id }>
-                            <div>Done Question ID: { id }</div>
+                            <QuestionCard id={ id } />
                         </li>
                     )) }
                 </ul>

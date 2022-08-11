@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import LoadingBar from "react-redux-loading-bar";
 import { handleInitialData } from "../actions/shared";
 import Dashboard from "./Dashboard";
+import QuestionCard from "./QuestionCard";
 
 const App = ({ dispatch, loading }) => {
     useEffect(() => {
