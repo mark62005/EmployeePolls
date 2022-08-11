@@ -7,12 +7,13 @@ import { handleInitialData } from "../actions/shared";
 import Dashboard from "./Dashboard";
 import QuestionPage from "./QuestionPage";
 import NewQuestion from "./NewQuestion";
+import Leaderboard from "./Leaderboard";
 import Nav from "./Nav";
 
 const App = ({ dispatch, loading }) => {
     useEffect(() => {
         dispatch(handleInitialData());
-    }, [ dispatch ]);
+    }, []);
 
     return (
         <Fragment>
@@ -23,6 +24,7 @@ const App = ({ dispatch, loading }) => {
                     loading === true ? null : (
                         <Routes>
                             <Route exact path="/" element={ <Dashboard /> } />
+                            <Route path="/leaderboard" element={ <Leaderboard /> } />
                             <Route path="/question/:id" element={ <QuestionPage /> } />
                             <Route path="/new" element={ <NewQuestion /> } />
                         </Routes>
