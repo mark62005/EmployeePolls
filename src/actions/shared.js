@@ -5,7 +5,6 @@ import { receiveQuestions, addQuestion, saveVote } from "./questions";
 import { setAuthedUser } from "./authedUser";
 
 const AUTHED_ID = "mtsamis";
-export const VOTE_QUESTION = "VOTE_QUESTION";
 
 export function handleInitialData() {
     return (dispatch) => {

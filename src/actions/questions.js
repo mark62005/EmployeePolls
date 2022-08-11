@@ -1,6 +1,3 @@
-import { saveQuestion } from "../utils/api";
-import { showLoading, hideLoading } from "react-redux-loading-bar";
-
 export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
 export const ADD_QUESTION = "ADD_QUESTION";
 export const SAVE_VOTE = "SAVE_VOTE";
