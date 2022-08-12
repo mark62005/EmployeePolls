@@ -51,3 +51,11 @@ export function withRouter(Component) {
 
     return ComponentWithRouterProp;
 }
+
+export function getPercentage(voteCount, userCount) {
+    const voteFloat = parseFloat(voteCount).toFixed(2);
+    const userFloat = parseFloat(userCount).toFixed(2);
+    const percentage = voteFloat / userFloat * 100;
+
+    return parseFloat(percentage).toFixed(2);
+}

@@ -6,7 +6,13 @@ import {
     OPTION_TWO,
     withRouter,
     formatQuestion,
+    getPercentage,
 } from "../utils/helpers";
+import Card from "react-bootstrap/Card";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
+import Avatar from "./Avatar";
 
 const QuestionPage = ({ authedUser, question, dispatch }) => {
     const {
@@ -30,37 +36,73 @@ const QuestionPage = ({ authedUser, question, dispatch }) => {
         }));
     };
 
-    const renderPollOptions = () => {
+    const renderPollOptions = (option) => {
         if (hasVoted === false) {
             return (
-                <div className="poll-options">
-                    <div className="poll-option">
-                        <p>{ optionOne.text }</p>
-                        <button className="poll-btn" onClick={ handlePoll } value={ OPTION_ONE }>Click</button>
-                    </div>
-                    <div className="poll-option">
-                        <p>{ optionTwo.text }</p>
-                        <button className="poll-btn" onClick={ handlePoll } value={ OPTION_TWO }>Click</button>
-                    </div>
-                </div>
+                <Card.Body>
+                    <Button
+                        className="px-3"
+                        type="submit"
+                        variant="primary"
+                        onClick={ handlePoll }
+                        value={ option }
+                    >
+                        Vote
+                    </Button>
+                </Card.Body>
             );
         }
 
+        const optionOneVoteCount = optionOne.votes.length;
+        const optionTwoVoteCount = optionTwo.votes.length;
+        const optionOneVotePercentage = getPercentage(optionOneVoteCount, userCount);
+        const optionTwoVotePercentage = getPercentage(optionTwoVoteCount, userCount);
+
         return (
-            <div>
-                <h4>Thank you for voting!</h4>
-                <p>{ `${voteCount}/${userCount} users ${voteCount > 1 ? "have" : "has"} voted.` }</p>
-            </div>
+            <Card.Body className="d-flex justify-content-between">
+                <Card.Text className="mb-0">
+                    { option === OPTION_ONE
+                        ? `${optionOneVoteCount}/${userCount} users ${optionOneVoteCount > 1 ? "have" : "has"} voted for this option.`
+                        : `${optionTwoVoteCount}/${userCount} users ${optionTwoVoteCount > 1 ? "have" : "has"} voted for this option.`
+                    }
+                </Card.Text>
+                <Card.Text className={ { "mb-0": true } }>
+                    { option === OPTION_ONE
+                        ? `${optionOneVotePercentage} %`
+                        : `${optionTwoVotePercentage} %`
+                    }
+                </Card.Text>
+            </Card.Body>
         );
     };
 
     return (
-        <div>
-            <h3>Poll by { author }</h3>
-            <img src={ avatar !== null ? avatar : null } alt={ `The avatar of ${author}` } />
-            <h3>Would You Rather</h3>
-            { renderPollOptions() }
-        </div>
+        <Card border="dark" className="text-center py-3 m-5">
+            <Card.Body>
+                <Card.Title className="fs-2">{ `Poll by ${author}` }</Card.Title>
+                <Avatar avatarURL={ avatar } name={ author } />
+                {
+                    hasVoted === false
+                        ? null
+                        : <Card.Subtitle className="pt-4 fs-3 text-success">Thank you for voting!</Card.Subtitle>
+                }
+                <Card.Subtitle className="mt-4 mb-3 fs-4">Would You Rather</Card.Subtitle>
+                <Row md={ 2 }>
+                    <Col>
+                        <Card>
+                            <Card.Header>{ optionOne.text }</Card.Header>
+                            { renderPollOptions(OPTION_ONE) }
+                        </Card>
+                    </Col>
+                    <Col>
+                        <Card>
+                            <Card.Header>{ optionTwo.text }</Card.Header>
+                            { renderPollOptions(OPTION_TWO) }
+                        </Card>
+                    </Col>
+                </Row>
+            </Card.Body>
+        </Card>
     );
 };
 
