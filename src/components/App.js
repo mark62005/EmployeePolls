@@ -1,3 +1,4 @@
+import "../css/App.css";
 import { useEffect, Fragment } from "react";
 import { Routes, Route } from "react-router-dom";
 import { connect } from "react-redux";
@@ -9,7 +10,8 @@ import QuestionPage from "./QuestionPage";
 import NewQuestion from "./NewQuestion";
 import Leaderboard from "./Leaderboard";
 import NavBar from "./NavBar";
-import "../css/App.css";
+import Container from "react-bootstrap/Container";
+
 
 const App = ({ dispatch, loading }) => {
     useEffect(() => {
@@ -19,7 +21,7 @@ const App = ({ dispatch, loading }) => {
     return (
         <Fragment>
             <LoadingBar />
-            <div className="container">
+            <Container>
                 <NavBar />
                 {
                     loading === true ? null : (
@@ -31,7 +33,7 @@ const App = ({ dispatch, loading }) => {
                         </Routes>
                     )
                 }
-            </div>
+            </Container>
         </Fragment>
     );
 };

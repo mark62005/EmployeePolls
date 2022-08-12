@@ -2,12 +2,13 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { sortQuestionsIdByTimestamp } from "../utils/helpers";
 import QuestionList from "./QuestionList";
+import Container from "react-bootstrap/Container";
 
 const Dashboard = ({ authedUser, newQuestionIds, doneQuestionIds }) => {
     const categories = [ "new", "done" ];
 
     return (
-        <div className="dashboard">
+        <Container className="dashboard" fluid>
             {
                 categories.map((category) => (
                     category === "new"
@@ -23,7 +24,7 @@ const Dashboard = ({ authedUser, newQuestionIds, doneQuestionIds }) => {
                         />
                 ))
             }
-        </div>
+        </Container>
     );
 };
 
