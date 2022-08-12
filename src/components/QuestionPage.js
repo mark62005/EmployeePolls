@@ -1,30 +1,12 @@
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { formatQuestion } from "../utils/helpers";
 import { handleVoteQuestion } from "../actions/shared";
 import {
-    useLocation,
-    useNavigate,
-    useParams,
-} from "react-router-dom";
-import { OPTION_ONE, OPTION_TWO } from "../utils/helpers";
-
-// https://reactrouter.com/docs/en/v6/getting-started/faq
-function withRouter(Component) {
-    function ComponentWithRouterProp(props) {
-        let location = useLocation();
-        let navigate = useNavigate();
-        let params = useParams();
-        return (
-            <Component
-                { ...props }
-                router={ { location, navigate, params } }
-            />
-        );
-    }
-
-    return ComponentWithRouterProp;
-}
+    OPTION_ONE,
+    OPTION_TWO,
+    withRouter,
+    formatQuestion,
+} from "../utils/helpers";
 
 const QuestionPage = ({ authedUser, question, dispatch }) => {
     const {

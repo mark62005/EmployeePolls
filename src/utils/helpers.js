@@ -1,3 +1,9 @@
+import {
+    useLocation,
+    useNavigate,
+    useParams,
+} from "react-router-dom";
+
 export const OPTION_ONE = "optionOne";
 export const OPTION_TWO = "optionTwo";
 
@@ -27,4 +33,21 @@ export function sortQuestionsIdByTimestamp(questions) {
     return questions
         .map((q) => q.id)
         .sort((a, b) => b.timestamp - a.timestamp);
+}
+
+// https://reactrouter.com/docs/en/v6/getting-started/faq
+export function withRouter(Component) {
+    function ComponentWithRouterProp(props) {
+        let location = useLocation();
+        let navigate = useNavigate();
+        let params = useParams();
+        return (
+            <Component
+                { ...props }
+                router={ { location, navigate, params } }
+            />
+        );
+    }
+
+    return ComponentWithRouterProp;
 }
