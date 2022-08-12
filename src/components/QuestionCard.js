@@ -21,8 +21,8 @@ const QuestionCard = ({ question, authedUser }) => {
     const { avatarURL, name } = authedUser;
 
     return (
-        <Card border="dark">
-            <Card.Body className="d-flex flex-column align-items-center">
+        <Card border="dark" className="text-center">
+            <Card.Body>
                 <Avatar avatarURL={ avatarURL } name={ name } />
                 <Card.Subtitle className="mt-2 fs-4">{ author }</Card.Subtitle>
                 <Card.Text className="mb-3 fs-6 text-black-50">{ formatDate(timestamp) }</Card.Text>
