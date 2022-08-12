@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { useState } from "react";
 import { connect } from "react-redux";
 import { handleVoteQuestion } from "../actions/shared";
 import {
@@ -15,13 +16,14 @@ import Button from "react-bootstrap/Button";
 import Avatar from "./Avatar";
 
 const QuestionPage = ({ authedUser, question, dispatch }) => {
+    const [ selected, setSelected ] = useState("");
+
     const {
         qid,
         author,
         avatar,
         optionOne,
         optionTwo,
-        voteCount,
         userCount,
         hasVoted,
     } = question;
@@ -34,6 +36,7 @@ const QuestionPage = ({ authedUser, question, dispatch }) => {
             qid,
             answer: e.target.value,
         }));
+        setSelected(e.target.value);
     };
 
     const renderPollOptions = (option) => {
@@ -89,13 +92,19 @@ const QuestionPage = ({ authedUser, question, dispatch }) => {
                 <Card.Subtitle className="mt-4 mb-3 fs-4">Would You Rather</Card.Subtitle>
                 <Row md={ 2 }>
                     <Col>
-                        <Card>
+                        <Card
+                            bg={ selected === OPTION_ONE ? "success" : null }
+                            text={ selected === OPTION_ONE ? "light" : null }
+                        >
                             <Card.Header>{ optionOne.text }</Card.Header>
                             { renderPollOptions(OPTION_ONE) }
                         </Card>
                     </Col>
                     <Col>
-                        <Card>
+                        <Card
+                            bg={ selected === OPTION_TWO ? "success" : null }
+                            text={ selected === OPTION_TWO ? "light" : null }
+                        >
                             <Card.Header>{ optionTwo.text }</Card.Header>
                             { renderPollOptions(OPTION_TWO) }
                         </Card>
