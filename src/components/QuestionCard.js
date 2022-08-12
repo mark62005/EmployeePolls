@@ -3,29 +3,32 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { formatDate, formatQuestion } from "../utils/helpers";
 
-const QuestionCard = ({ question }) => {
+import Card from "react-bootstrap/Card";
+import Image from "react-bootstrap/Image";
+import Button from "react-bootstrap/Button";
+import Avatar from "./Avatar";
+
+const QuestionCard = ({ question, authedUser }) => {
     const {
         qid,
         timestamp,
         author,
         avatar,
-        optionOne,
-        optionTwo,
         voteCount,
         userCount,
         hasVoted,
     } = question;
+    const { avatarURL, name } = authedUser;
 
     return (
-        <div className="question-card">
-            <div className="question-info">
-                <h3>{ author }</h3>
-                <p>{ formatDate(timestamp) }</p>
-                <Link to={ `/question/${qid}` }>
-                    <button className="show-btn">Show</button>
-                </Link>
-            </div>
-        </div>
+        <Card border="dark">
+            <Card.Body className="d-flex flex-column align-items-center">
+                <Avatar avatarURL={ avatarURL } name={ name } />
+                <Card.Subtitle className="mt-2 fs-4">{ author }</Card.Subtitle>
+                <Card.Text className="mb-3 fs-6 text-black-50">{ formatDate(timestamp) }</Card.Text>
+                <Button variant="primary" href={ `/question/${qid}` }>Show</Button>
+            </Card.Body>
+        </Card>
     );
 };
 
@@ -38,7 +41,7 @@ const mapStateToProps = ({ authedUser, users, questions }, { id }) => {
     const question = questions[ id ];
 
     return {
-        authedUser,
+        authedUser: { ...users[ authedUser ] },
         question: question
             ? formatQuestion(question, users[ question.author ], authedUser, users)
             : null,

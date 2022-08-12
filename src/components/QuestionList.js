@@ -10,24 +10,29 @@ const QuestionList = ({ category, questionIds }) => {
         <Container className="my-4">
             <Row className="border border-2">
                 <Col>
-                    <h2 className="display-6">
+                    <h2 className="display-6 p-2">
                         { category === "new" ? "New Questions" : "Done" }
                     </h2>
                 </Col>
             </Row>
             <Row className="border border-2 border-top-0">
                 <Col className="">
-                    <Container fluid>
-                        <Row>
-                            {
-                                questionIds.map((id) => (
-                                    <Col key={ id } md={ 4 } className="p-1 my-3 bg-primary">
-                                        <QuestionCard id={ id } />
-                                    </Col>
-                                ))
-                            }
-                        </Row>
-                    </Container>
+                    <Row md={ 2 } lg={ 3 } className="g-4 p-3">
+                        {
+                            questionIds.map((id) => (
+                                <Col key={ id } md={ 4 } className="">
+                                    <QuestionCard id={ id } />
+                                </Col>
+                            ))
+                        }
+                        {
+                            questionIds.map((id) => (
+                                <Col key={ id } md={ 4 } className="">
+                                    <QuestionCard id={ id } />
+                                </Col>
+                            ))
+                        }
+                    </Row>
                 </Col>
             </Row>
         </Container>
