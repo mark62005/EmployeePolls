@@ -7,6 +7,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Image from "react-bootstrap/Image";
 import { PersonCircle } from "react-bootstrap-icons";
+import Avatar from "./Avatar";
 
 const NavBar = ({ authedUser, loading, router }) => {
     const { location } = router;
@@ -46,8 +47,8 @@ const NavBar = ({ authedUser, loading, router }) => {
                         </Nav.Item>
                     </Nav>
                     <Nav className="align-items-center">
-                        { renderAvatar() }
-                        <Navbar.Text className="fw-bold">{ name }</Navbar.Text>
+                        { loading === true ? null : <Avatar avatarURL={ avatarURL } name={ name } /> }
+                        <Navbar.Text className="fw-bold ms-2">{ name }</Navbar.Text>
                         <Nav.Item>
                             {/* TODO: redirect to logout page */ }
                             <Nav.Link href="#logout">Logout</Nav.Link>
