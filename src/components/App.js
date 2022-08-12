@@ -8,7 +8,8 @@ import Dashboard from "./Dashboard";
 import QuestionPage from "./QuestionPage";
 import NewQuestion from "./NewQuestion";
 import Leaderboard from "./Leaderboard";
-import Nav from "./Nav";
+import NavBar from "./NavBar";
+import "../css/App.css";
 
 const App = ({ dispatch, loading }) => {
     useEffect(() => {
@@ -19,7 +20,7 @@ const App = ({ dispatch, loading }) => {
         <Fragment>
             <LoadingBar />
             <div className="container">
-                <Nav />
+                <NavBar />
                 {
                     loading === true ? null : (
                         <Routes>
