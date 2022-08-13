@@ -18,6 +18,10 @@ import Avatar from "./Avatar";
 const QuestionPage = ({ authedUser, question, dispatch }) => {
     const [ selected, setSelected ] = useState("");
 
+    if (question === null) {
+        return <p className="display-1 text-center mt-3">Sorry, this poll doesn't exist.</p>;
+    }
+
     const {
         qid,
         author,
