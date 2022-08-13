@@ -31,8 +31,8 @@ export function formatQuestion(question, author, authedUser, users) {
 
 export function sortQuestionsIdByTimestamp(questions) {
     return questions
-        .map((q) => q.id)
-        .sort((a, b) => b.timestamp - a.timestamp);
+        .sort((a, b) => b.timestamp - a.timestamp)
+        .map((q) => q.id);
 }
 
 // https://reactrouter.com/docs/en/v6/getting-started/faq

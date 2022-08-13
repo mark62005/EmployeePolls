@@ -25,13 +25,6 @@ const QuestionList = ({ category, questionIds }) => {
                                 </Col>
                             ))
                         }
-                        {
-                            questionIds.map((id) => (
-                                <Col key={ id } md={ 4 } className="">
-                                    <QuestionCard id={ id } />
-                                </Col>
-                            ))
-                        }
                     </Row>
                 </Col>
             </Row>
