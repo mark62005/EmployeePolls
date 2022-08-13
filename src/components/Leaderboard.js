@@ -1,24 +1,52 @@
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import Table from "react-bootstrap/Table";
+import Container from "react-bootstrap/Container";
+import Avatar from "./Avatar";
 
 const Leaderboard = ({ users }) => {
     return (
-        <div>
-            Leaderboard
-            <ul>
+        <Table
+            striped
+            bordered
+            hover
+            className="align-middle my-3"
+        >
+            <thead>
+                <tr>
+                    <th colSpan={ 2 }>User</th>
+                    <th>Answerd</th>
+                    <th>Created</th>
+                </tr>
+            </thead>
+            <tbody>
                 {
                     users.map((user) => {
                         const answeredCount = Object.keys(user.answers).length;
 
                         return (
-                            <li key={ user.id }>
-                                <p>{ `${user.name} (${user.id}), Answerd: ${answeredCount}, Created: ${user.questions.length}` }</p>
-                            </li>
+                            <tr key={ user.id }>
+                                <td className="text-center">
+                                    <Avatar avatarURL={ user.avatarURL } name={ user.name } />
+                                </td>
+                                <td>
+                                    <Container className="d-flex flex-column">
+                                        <p className="mb-auto mt-3 fs-4">
+                                            { user.name }
+                                        </p>
+                                        <p className="mt-auto mb-3 fs-6 fw-light">
+                                            @{ user.id }
+                                        </p>
+                                    </Container>
+                                </td>
+                                <td className="text-end">{ answeredCount }</td>
+                                <td className="text-end">{ user.questions.length }</td>
+                            </tr>
                         );
                     })
                 }
-            </ul>
-        </div>
+            </tbody>
+        </Table>
     );
 };
 
