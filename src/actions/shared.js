@@ -4,8 +4,6 @@ import { receiveUsers, saveQuestionToUsers, saveAnswer } from "./users";
 import { receiveQuestions, addQuestion, saveVote } from "./questions";
 import { setAuthedUser } from "./authedUser";
 
-const AUTHED_ID = "mtsamis";
-
 export function handleInitialData(isValidated, authedId) {
     return (dispatch) => {
         dispatch(showLoading());

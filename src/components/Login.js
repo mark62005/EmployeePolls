@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { connect } from "react-redux";
 import { setAuthedUser } from "../actions/authedUser";
 import Container from "react-bootstrap/Container";
@@ -9,7 +9,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
 
-const Login = ({ dispatch, users, authedUser }) => {
+const Login = ({ dispatch, users }) => {
     const [ userId, setUserId ] = useState("");
     const [ password, setPassword ] = useState("");
     const [ isValidated, setIsValidated ] = useState(true);

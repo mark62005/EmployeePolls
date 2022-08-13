@@ -6,8 +6,6 @@ import { setAuthedUser } from "../actions/authedUser";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import Image from "react-bootstrap/Image";
-import { PersonCircle } from "react-bootstrap-icons";
 import Avatar from "./Avatar";
 import Button from "react-bootstrap/Button";
 
@@ -57,6 +55,7 @@ NavBar.propTypes = {
     authedUser: PropTypes.object.isRequired,
     loading: PropTypes.bool.isRequired,
     router: PropTypes.object.isRequired,
+    dispatch: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = ({ authedUser, users }) => ({

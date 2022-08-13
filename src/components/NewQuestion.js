@@ -9,7 +9,7 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import { Container } from "react-bootstrap";
+import Container from "react-bootstrap/Container";
 
 const NewQuestion = ({ dispatch }) => {
     const navigate = useNavigate();
@@ -76,7 +76,6 @@ const NewQuestion = ({ dispatch }) => {
                             Submit
                         </Button>
                     </Form>
-
                 </Card.Body>
             </Card>
         </Container>
