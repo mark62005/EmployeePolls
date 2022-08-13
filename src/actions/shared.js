@@ -6,7 +6,7 @@ import { setAuthedUser } from "./authedUser";
 
 const AUTHED_ID = "mtsamis";
 
-export function handleInitialData() {
+export function handleInitialData(isValidated, authedId) {
     return (dispatch) => {
         dispatch(showLoading());
 
@@ -14,7 +14,10 @@ export function handleInitialData() {
             .then(({ users, questions }) => {
                 dispatch(receiveUsers(users));
                 dispatch(receiveQuestions(questions));
-                dispatch(setAuthedUser(AUTHED_ID));
+
+                if (isValidated === true) {
+                    dispatch(setAuthedUser(authedId));
+                }
                 dispatch(hideLoading());
             });
     };

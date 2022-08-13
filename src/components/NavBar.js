@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { withRouter } from "../utils/helpers";
+import { setAuthedUser } from "../actions/authedUser";
 
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -8,10 +9,19 @@ import Navbar from 'react-bootstrap/Navbar';
 import Image from "react-bootstrap/Image";
 import { PersonCircle } from "react-bootstrap-icons";
 import Avatar from "./Avatar";
+import Button from "react-bootstrap/Button";
 
-const NavBar = ({ authedUser, loading, router }) => {
-    const { location } = router;
+const NavBar = ({ authedUser, loading, router, dispatch }) => {
+    const { location, navigate } = router;
     const { name, avatarURL } = authedUser;
+
+    const handleOnClick = (e) => {
+        e.preventDefault();
+
+        localStorage.clear();
+        dispatch(setAuthedUser(null));
+        navigate("/");
+    };
 
     return (
         <Navbar bg="light" expand="md" variant="light">
@@ -34,7 +44,7 @@ const NavBar = ({ authedUser, loading, router }) => {
                         <Navbar.Text className="fw-bold ms-2">{ name }</Navbar.Text>
                         <Nav.Item>
                             {/* TODO: redirect to logout page */ }
-                            <Nav.Link href="#logout">Logout</Nav.Link>
+                            <Button variant="light" onClick={ handleOnClick }>Logout</Button>
                         </Nav.Item>
                     </Nav>
                 </Navbar.Collapse>
