@@ -8,7 +8,7 @@ const Dashboard = ({ authedUser, newQuestionIds, doneQuestionIds }) => {
     const categories = [ "new", "done" ];
 
     return (
-        <Container className="dashboard" fluid>
+        <Container className="p-3">
             {
                 categories.map((category) => (
                     category === "new"

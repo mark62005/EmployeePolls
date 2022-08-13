@@ -13,29 +13,12 @@ const NavBar = ({ authedUser, loading, router }) => {
     const { location } = router;
     const { name, avatarURL } = authedUser;
 
-    const renderAvatar = () => {
-        if (loading === true) {
-            return;
-        }
-
-        if (avatarURL !== null) {
-            return <Image
-                src={ avatarURL }
-                alt={ `Avatar of ${name}` }
-                roundedCircle={ true }
-                className="me-2"
-            />;
-        }
-
-        return <PersonCircle size={ 24 } className="me-2" />;
-    };
-
     return (
         <Navbar bg="light" expand="md" variant="light">
             <Container>
                 <Navbar.Toggle aria-controls="user-info-nav" />
                 <Navbar.Collapse id="user-info-nav">
-                    <Nav className="me-auto" variant="tabs" activeKey={ location.pathname }>
+                    <Nav className="me-auto" activeKey={ location.pathname }>
                         <Nav.Item>
                             <Nav.Link href="/">Home</Nav.Link>
                         </Nav.Item>

@@ -6,47 +6,49 @@ import Avatar from "./Avatar";
 
 const Leaderboard = ({ users }) => {
     return (
-        <Table
-            striped
-            bordered
-            hover
-            className="align-middle my-3"
-        >
-            <thead>
-                <tr>
-                    <th colSpan={ 2 }>User</th>
-                    <th>Answerd</th>
-                    <th>Created</th>
-                </tr>
-            </thead>
-            <tbody>
-                {
-                    users.map((user) => {
-                        const answeredCount = Object.keys(user.answers).length;
+        <Container className="p-4">
+            <Table
+                striped
+                bordered
+                hover
+                className="align-middle"
+            >
+                <thead>
+                    <tr>
+                        <th colSpan={ 2 }>User</th>
+                        <th>Answerd</th>
+                        <th>Created</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        users.map((user) => {
+                            const answeredCount = Object.keys(user.answers).length;
 
-                        return (
-                            <tr key={ user.id }>
-                                <td className="text-center">
-                                    <Avatar avatarURL={ user.avatarURL } name={ user.name } />
-                                </td>
-                                <td>
-                                    <Container className="d-flex flex-column">
-                                        <p className="mb-auto mt-3 fs-4">
-                                            { user.name }
-                                        </p>
-                                        <p className="mt-auto mb-3 fs-6 fw-light">
-                                            @{ user.id }
-                                        </p>
-                                    </Container>
-                                </td>
-                                <td className="text-end">{ answeredCount }</td>
-                                <td className="text-end">{ user.questions.length }</td>
-                            </tr>
-                        );
-                    })
-                }
-            </tbody>
-        </Table>
+                            return (
+                                <tr key={ user.id }>
+                                    <td className="text-center">
+                                        <Avatar avatarURL={ user.avatarURL } name={ user.name } />
+                                    </td>
+                                    <td>
+                                        <Container className="d-flex flex-column">
+                                            <p className="mb-auto mt-3 fs-4">
+                                                { user.name }
+                                            </p>
+                                            <p className="mt-auto mb-3 fs-6 fw-light">
+                                                @{ user.id }
+                                            </p>
+                                        </Container>
+                                    </td>
+                                    <td className="text-end">{ answeredCount }</td>
+                                    <td className="text-end">{ user.questions.length }</td>
+                                </tr>
+                            );
+                        })
+                    }
+                </tbody>
+            </Table>
+        </Container>
     );
 };
 
