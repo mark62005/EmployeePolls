@@ -1,10 +1,8 @@
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import { formatDate, formatQuestion } from "../utils/helpers";
 
 import Card from "react-bootstrap/Card";
-import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
 import Avatar from "./Avatar";
 
