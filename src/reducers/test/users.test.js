@@ -120,4 +120,8 @@ describe("users", () => {
         };
         expect(users(mockState, saveAnswerAction)).toEqual(expectedUsers);
     });
+
+    it("will return an empty state if nothing is being passed", () => {
+        expect(users({}, {})).toEqual({});
+    });
 });
