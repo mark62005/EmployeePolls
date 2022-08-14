@@ -9,7 +9,7 @@ import {
 
 describe("receiveUsers", () => {
     it(`will return an object with action type of ${RECEIVIE_USERS} and a users object`, () => {
-        const users = {
+        var users = {
             sarahedo: {
                 id: 'sarahedo',
                 password: 'password123',
@@ -45,8 +45,8 @@ describe("receiveUsers", () => {
 
 describe("saveQuestionToUsers", () => {
     it(`will return an object with action type of ${SAVE_QUESTION} and the question`, () => {
-        const qid = "newID";
-        const author = "tylermcginnis";
+        var qid = "newID";
+        var author = "tylermcginnis";
 
         expect(saveQuestionToUsers({ qid, author })).toEqual({
             type: SAVE_QUESTION,
@@ -58,9 +58,9 @@ describe("saveQuestionToUsers", () => {
 
 describe("saveAnswer", () => {
     it(`will return an object with action type of ${SAVE_ANSWER} and the question`, () => {
-        const qid = "6ni6ok3ym7mf1p33lnez";
-        const authedUser = "tylermcginnis";
-        const answer = "optionOne";
+        var qid = "6ni6ok3ym7mf1p33lnez";
+        var authedUser = "tylermcginnis";
+        var answer = "optionOne";
 
         expect(saveAnswer({ authedUser, qid, answer })).toEqual({
             type: SAVE_ANSWER,
