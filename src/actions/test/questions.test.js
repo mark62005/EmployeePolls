@@ -24,12 +24,11 @@ describe("receiveQuestions", () => {
                 },
             },
         };
-        const expectation = {
+
+        expect(receiveQuestions(questions)).toEqual({
             type: RECEIVE_QUESTIONS,
             questions,
-        };
-
-        expect(receiveQuestions(questions)).toEqual(expectation);
+        });
     });
 });
 
