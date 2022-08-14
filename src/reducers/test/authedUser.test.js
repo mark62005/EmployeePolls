@@ -1,13 +1,18 @@
-import { setAuthedUser } from "../../actions/authedUser";
+import { SET_AUTHED_USER } from "../../actions/authedUser";
 import authedUser from "../authedUser";
 
 describe("authedUser", () => {
-    it("will return the authedId when the authedId is passed", () => {
+    it(`will return authedId if the action type is ${SET_AUTHED_USER}`, () => {
         var authedId = "zoshikanlu";
-        expect(authedUser({}, setAuthedUser(authedId))).toBe(authedId);
+        var setAuthedUserAction = {
+            type: SET_AUTHED_USER,
+            id: authedId,
+        };
+
+        expect(authedUser({}, setAuthedUserAction)).toBe(authedId);
     });
 
-    it("will return null if no authedId is being passed", () => {
-        expect(authedUser(null, setAuthedUser(null))).toBeNull();
+    it("will return an empty state if nothing is being passed", () => {
+        expect(authedUser(null, {})).toBeNull();
     });
 });
