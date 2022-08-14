@@ -29,7 +29,7 @@ const Dashboard = ({ authedUser, newQuestionIds, doneQuestionIds }) => {
 };
 
 Dashboard.propTypes = {
-    authedUser: PropTypes.string.isRequired,
+    authedUser: PropTypes.string,
     newQuestionIds: PropTypes.array.isRequired,
     doneQuestionIds: PropTypes.array.isRequired,
 };
