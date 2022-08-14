@@ -1,4 +1,5 @@
 import {
+    fireEvent,
     render,
     screen,
 } from "@testing-library/react";
@@ -42,6 +43,25 @@ describe("Login", () => {
 
         expect(idSelect).toBeInTheDocument();
         expect(signInButton).toBeInTheDocument();
+    });
+
+    it("will not display the login form if sign in is successful", async () => {
+        var view = render(
+            <MemoryRouter>
+                <Provider store={ mockStore }>
+                    <Login />
+                </Provider>
+            </MemoryRouter>
+        );
+
+        var idSelect = screen.getByTestId("user-id-select");
+        fireEvent.change(idSelect, { target: { value: "sarahedo" } });
+        var signInButton = screen.getByTestId("sign-in-button");
+        fireEvent.click(signInButton);
+
+        view.rerender();
+        expect(idSelect).not.toBeInTheDocument();
+        expect(signInButton).not.toBeInTheDocument();
     });
 
     // it("will display a login form with id input, passsword input and a sign in button", async () => {
