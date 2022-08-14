@@ -14,16 +14,13 @@ const QuestionCard = ({ question, authedUser }) => {
         timestamp,
         author,
         avatar,
-        voteCount,
-        userCount,
-        hasVoted,
     } = question;
-    const { avatarURL, name } = authedUser;
+    const { name } = authedUser;
 
     return (
         <Card border="dark" className="text-center">
             <Card.Body>
-                <Avatar avatarURL={ avatarURL } name={ name } />
+                <Avatar avatarURL={ avatar } name={ name } />
                 <Card.Subtitle className="mt-2 fs-4">{ author }</Card.Subtitle>
                 <Card.Text className="mb-3 fs-6 text-black-50">{ formatDate(timestamp) }</Card.Text>
                 <Button variant="primary" href={ `/question/${qid}` }>Show</Button>

@@ -38,10 +38,16 @@ const NavBar = ({ authedUser, loading, router, dispatch }) => {
                         </Nav.Item>
                     </Nav>
                     <Nav className="align-items-center">
-                        { loading === true ? null : <Avatar avatarURL={ avatarURL } name={ name } /> }
+                        { loading === true
+                            ? null
+                            : <Avatar
+                                avatarURL={ avatarURL }
+                                name={ name }
+                                isOnNavBar={ true }
+                            />
+                        }
                         <Navbar.Text className="fw-bold ms-2">{ name }</Navbar.Text>
                         <Nav.Item>
-                            {/* TODO: redirect to logout page */ }
                             <Button variant="light" onClick={ handleOnClick }>Logout</Button>
                         </Nav.Item>
                     </Nav>

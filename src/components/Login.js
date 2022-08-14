@@ -78,6 +78,7 @@ const Login = ({ dispatch, users }) => {
                             value={ userId }
                             onChange={ (e) => handleInputChange(e, "uid") }
                             required
+                            data-testid="id-input"
                         />
                         <Form.Control.Feedback type="invalid">
                             Please provide a valid User ID.
@@ -93,6 +94,7 @@ const Login = ({ dispatch, users }) => {
                             value={ password }
                             onChange={ (e) => handleInputChange(e, "password") }
                             required
+                            data-testid="password-input"
                         />
                         <Form.Control.Feedback type="invalid">
                             Please provide a valid password.
@@ -106,8 +108,9 @@ const Login = ({ dispatch, users }) => {
                     variant="primary"
                     onClick={ handleSubmit }
                     disabled={ userId === "" || password === "" }
+                    data-testid="sign-in-button"
                 >
-                    Submit
+                    SIGN IN
                 </Button>
             </Form>
         </Container>
