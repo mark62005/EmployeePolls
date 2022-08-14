@@ -16,7 +16,7 @@ Object {
             Login
           </h1>
           <select
-            class="form-select"
+            class="my-4 form-select"
             data-testid="user-id-select"
           />
           <button
@@ -42,7 +42,7 @@ Object {
           Login
         </h1>
         <select
-          class="form-select"
+          class="my-4 form-select"
           data-testid="user-id-select"
         />
         <button

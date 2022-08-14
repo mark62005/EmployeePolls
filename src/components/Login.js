@@ -86,6 +86,7 @@ const Login = ({ dispatch, users }) => {
                     defaultValue={ userId }
                     onChange={ handleValueChange }
                     data-testid="user-id-select"
+                    className="my-4"
                 >
                     {
                         Object.values(users).map((user) => (
