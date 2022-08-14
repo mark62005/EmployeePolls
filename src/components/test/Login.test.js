@@ -1,4 +1,7 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import {
+    render,
+    screen,
+} from "@testing-library/react";
 import thunk from "redux-thunk";
 import reducer from "../../reducers";
 import { configureStore } from "@reduxjs/toolkit";
@@ -25,7 +28,7 @@ describe("Login", () => {
         expect(view).toMatchSnapshot();
     });
 
-    it("will display a login form with id input, passsword input and a sign in button", async () => {
+    it("will display a login form with user id select and a sign in button", async () => {
         render(
             <MemoryRouter>
                 <Provider store={ mockStore }>
@@ -34,40 +37,56 @@ describe("Login", () => {
             </MemoryRouter>
         );
 
-        var idInput = screen.getByTestId("id-input");
-        var passwordInput = screen.getByTestId("password-input");
+        var idSelect = screen.getByTestId("user-id-select");
         var signInButton = screen.getByTestId("sign-in-button");
-        var errorAlert = screen.queryByTestId("error-message");
 
-        expect(idInput).toBeInTheDocument();
-        expect(passwordInput).toBeInTheDocument();
+        expect(idSelect).toBeInTheDocument();
         expect(signInButton).toBeInTheDocument();
-        expect(errorAlert).toBeNull();
     });
 
-    it("will display an error message if user id does not exist", async () => {
-        render(
-            <MemoryRouter>
-                <Provider store={ mockStore }>
-                    <Login />
-                </Provider>
-            </MemoryRouter>
-        );
+    // it("will display a login form with id input, passsword input and a sign in button", async () => {
+    //     render(
+    //         <MemoryRouter>
+    //             <Provider store={ mockStore }>
+    //                 <Login />
+    //             </Provider>
+    //         </MemoryRouter>
+    //     );
 
-        var idInput = screen.getByTestId("id-input");
-        fireEvent.change(idInput, { target: { value: "id" } });
+    //     var idInput = screen.getByTestId("id-input");
+    //     var passwordInput = screen.getByTestId("password-input");
+    //     var signInButton = screen.getByTestId("sign-in-button");
+    //     var errorAlert = screen.queryByTestId("error-message");
 
-        var passwordInput = screen.getByTestId("password-input");
-        fireEvent.change(passwordInput, { target: { value: "password" } });
+    //     expect(idInput).toBeInTheDocument();
+    //     expect(passwordInput).toBeInTheDocument();
+    //     expect(signInButton).toBeInTheDocument();
+    //     expect(errorAlert).toBeNull();
+    // });
 
-        var signInButton = screen.getByTestId("sign-in-button");
-        fireEvent.click(signInButton);
+    // it("will display an error message if user id does not exist", async () => {
+    //     render(
+    //         <MemoryRouter>
+    //             <Provider store={ mockStore }>
+    //                 <Login />
+    //             </Provider>
+    //         </MemoryRouter>
+    //     );
 
-        var errorAlert = screen.getByText("Error. User ID doesn't exist.");
+    //     var idInput = screen.getByTestId("id-input");
+    //     fireEvent.change(idInput, { target: { value: "id" } });
 
-        expect(idInput).toBeInTheDocument();
-        expect(passwordInput).toBeInTheDocument();
-        expect(signInButton).toBeInTheDocument();
-        expect(errorAlert).toBeInTheDocument();
-    });
+    //     var passwordInput = screen.getByTestId("password-input");
+    //     fireEvent.change(passwordInput, { target: { value: "password" } });
+
+    //     var signInButton = screen.getByTestId("sign-in-button");
+    //     fireEvent.click(signInButton);
+
+    //     var errorAlert = screen.getByText("Error. User ID doesn't exist.");
+
+    //     expect(idInput).toBeInTheDocument();
+    //     expect(passwordInput).toBeInTheDocument();
+    //     expect(signInButton).toBeInTheDocument();
+    //     expect(errorAlert).toBeInTheDocument();
+    // });
 });

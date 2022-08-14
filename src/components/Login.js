@@ -10,61 +10,100 @@ import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
 
 const Login = ({ dispatch, users }) => {
-    const [ userId, setUserId ] = useState("");
+    const [ userId, setUserId ] = useState("sarahedo");
     const [ password, setPassword ] = useState("");
     const [ isValidated, setIsValidated ] = useState(true);
     const [ errorMessage, setErrorMessage ] = useState("");
 
-    const handleInputChange = (e, field) => {
+    const handleValueChange = (e) => {
         e.preventDefault();
-
-        if (field === "uid") {
-            setUserId(e.target.value);
-        } else {
-            setPassword(e.target.value);
-        }
-    };
-
-    const validateLoginInfo = (uid, password) => {
-        const user = Object.values(users).filter((u) => u.id === uid);
-
-        if (user.length !== 1 || user[ 0 ] === undefined) {
-            setErrorMessage("Error. User ID doesn't exist.");
-            setIsValidated(false);
-            return false;
-        } else if (user[ 0 ].password !== password) {
-            setErrorMessage("Error. Password is not correct.");
-            setIsValidated(false);
-            return false;
-        }
-
-        setIsValidated(true);
-        return true;
+        setUserId(e.target.value);
     };
 
     const handleSubmit = (e) => {
-        const form = e.currentTarget;
+        e.preventDefault();
 
-        if (
-            validateLoginInfo(userId, password) === true
-            && form.checkValidity() === true
-            && isValidated === true
-        ) {
-            e.preventDefault();
-            dispatch(setAuthedUser(userId));
-            localStorage.setItem("authedId", JSON.stringify(userId));
-            console.log(localStorage.getItem("authedId"));
-        } else {
-            e.stopPropagation();
-        }
-        setUserId("");
-        setPassword("");
+        dispatch(setAuthedUser(userId));
+        localStorage.setItem("authedId", JSON.stringify(userId));
     };
 
+    // const handleInputChange = (e, field) => {
+    //     e.preventDefault();
+
+    //     if (field === "uid") {
+    //         setUserId(e.target.value);
+    //     } else {
+    //         setPassword(e.target.value);
+    //     }
+    // };
+
+    // const validateLoginInfo = (uid, password) => {
+    //     const user = Object.values(users).filter((u) => u.id === uid);
+
+    //     if (user.length !== 1 || user[ 0 ] === undefined) {
+    //         setErrorMessage("Error. User ID doesn't exist.");
+    //         setIsValidated(false);
+    //         return false;
+    //     } else if (user[ 0 ].password !== password) {
+    //         setErrorMessage("Error. Password is not correct.");
+    //         setIsValidated(false);
+    //         return false;
+    //     }
+
+    //     setIsValidated(true);
+    //     return true;
+    // };
+
+    // const handleSubmit = (e) => {
+    //     const form = e.currentTarget;
+
+    //     if (
+    //         validateLoginInfo(userId, password) === true
+    //         && form.checkValidity() === true
+    //         && isValidated === true
+    //     ) {
+    //         e.preventDefault();
+    //         dispatch(setAuthedUser(userId));
+    //         localStorage.setItem("authedId", JSON.stringify(userId));
+    //         console.log(localStorage.getItem("authedId"));
+    //     } else {
+    //         e.stopPropagation();
+    //     }
+    //     setUserId("");
+    //     setPassword("");
+    // };
+
     return (
-        <Container fluid className="text-center w-50">
-            <h1>Login</h1>
-            <Form noValidate >
+        <Container
+            className={
+                "d-flex flex-column align-items-center justify-content-center"
+            }
+            style={ { height: "100vh", width: "100vw" } }
+        >
+            <Container fluid className="text-center w-50">
+                <h1>Login</h1>
+                <Form.Select
+                    defaultValue={ userId }
+                    onChange={ handleValueChange }
+                    data-testid="user-id-select"
+                >
+                    {
+                        Object.values(users).map((user) => (
+                            <option key={ user.id } value={ user.id }>{ user.name }</option>
+                        ))
+                    }
+                </Form.Select>
+                <Button
+                    variant="primary"
+                    onClick={ handleSubmit }
+                    data-testid="sign-in-button"
+                >
+                    SIGN IN
+                </Button>
+            </Container>
+
+
+            {/* <Form noValidate >
                 <Row className="text-start">
                     <Form.Group
                         as={ Col }
@@ -112,7 +151,7 @@ const Login = ({ dispatch, users }) => {
                 >
                     SIGN IN
                 </Button>
-            </Form>
+            </Form> */}
         </Container>
     );
 };

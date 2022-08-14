@@ -6,159 +6,53 @@ Object {
   "baseElement": <body>
     <div>
       <div
-        class="text-center w-50 container-fluid"
+        class="d-flex flex-column align-items-center justify-content-center container"
+        style="height: 100vh; width: 100vw;"
       >
-        <h1>
-          Login
-        </h1>
-        <form
-          class=""
-          novalidate=""
+        <div
+          class="text-center w-50 container-fluid"
         >
-          <div
-            class="text-start row"
-          >
-            <div
-              class="mb-3 col"
-            >
-              <label
-                class="form-label"
-                for="userId"
-              >
-                ID
-              </label>
-              <input
-                class="form-control"
-                data-testid="id-input"
-                id="userId"
-                placeholder="Enter Your ID"
-                required=""
-                type="text"
-                value=""
-              />
-              <div
-                class="invalid-feedback"
-              >
-                Please provide a valid User ID.
-              </div>
-            </div>
-          </div>
-          <div
-            class="text-start row"
-          >
-            <div
-              class="mb-3 col"
-            >
-              <label
-                class="form-label"
-                for="password"
-              >
-                Password
-              </label>
-              <input
-                class="form-control"
-                data-testid="password-input"
-                id="password"
-                placeholder="Enter Your Password"
-                required=""
-                type="password"
-                value=""
-              />
-              <div
-                class="invalid-feedback"
-              >
-                Please provide a valid password.
-              </div>
-            </div>
-          </div>
+          <h1>
+            Login
+          </h1>
+          <select
+            class="form-select"
+            data-testid="user-id-select"
+          />
           <button
             class="btn btn-primary"
             data-testid="sign-in-button"
-            disabled=""
             type="button"
           >
             SIGN IN
           </button>
-        </form>
+        </div>
       </div>
     </div>
   </body>,
   "container": <div>
     <div
-      class="text-center w-50 container-fluid"
+      class="d-flex flex-column align-items-center justify-content-center container"
+      style="height: 100vh; width: 100vw;"
     >
-      <h1>
-        Login
-      </h1>
-      <form
-        class=""
-        novalidate=""
+      <div
+        class="text-center w-50 container-fluid"
       >
-        <div
-          class="text-start row"
-        >
-          <div
-            class="mb-3 col"
-          >
-            <label
-              class="form-label"
-              for="userId"
-            >
-              ID
-            </label>
-            <input
-              class="form-control"
-              data-testid="id-input"
-              id="userId"
-              placeholder="Enter Your ID"
-              required=""
-              type="text"
-              value=""
-            />
-            <div
-              class="invalid-feedback"
-            >
-              Please provide a valid User ID.
-            </div>
-          </div>
-        </div>
-        <div
-          class="text-start row"
-        >
-          <div
-            class="mb-3 col"
-          >
-            <label
-              class="form-label"
-              for="password"
-            >
-              Password
-            </label>
-            <input
-              class="form-control"
-              data-testid="password-input"
-              id="password"
-              placeholder="Enter Your Password"
-              required=""
-              type="password"
-              value=""
-            />
-            <div
-              class="invalid-feedback"
-            >
-              Please provide a valid password.
-            </div>
-          </div>
-        </div>
+        <h1>
+          Login
+        </h1>
+        <select
+          class="form-select"
+          data-testid="user-id-select"
+        />
         <button
           class="btn btn-primary"
           data-testid="sign-in-button"
-          disabled=""
           type="button"
         >
           SIGN IN
         </button>
-      </form>
+      </div>
     </div>
   </div>,
   "debug": [Function],
