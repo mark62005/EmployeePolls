@@ -12,7 +12,7 @@ describe("authedUser", () => {
         expect(authedUser({}, setAuthedUserAction)).toBe(authedId);
     });
 
-    it("will return an empty state if nothing is being passed", () => {
-        expect(authedUser(null, {})).toBeNull();
+    it("will return an empty state if it's in initial state", () => {
+        expect(authedUser(null, { type: SET_AUTHED_USER })).toBeUndefined();
     });
 });
