@@ -20,6 +20,36 @@ Users will be able to answer polls, see which polls they haven’t answered, see
 <img width="1440" alt="Screen Shot 2022-08-14 at 2 36 10 PM" src="https://user-images.githubusercontent.com/73043578/184555855-f8669fd4-11c8-4514-afe1-4bce80cc1444.png">
 
 
+## Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+
+### Prerequisites
+
+This project can be built with npm.
+- npm is a package manager for the JavaScript programming language maintained by npm, Inc. npm is the default package manager for the JavaScript runtime environment Node.js. [Download Node.js and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+
+### Installation
+
+1. Clone the GitHub repository
+
+```
+git clone https://github.com/mark62005/MyReads.git
+cd MyReads
+```
+
+2. Install the dependencies.
+
+```
+npm install
+```
+
+### Start The Application
+
+```
+npm start
+```
+
 ## Data
 
 There are two types of objects stored in our database:
