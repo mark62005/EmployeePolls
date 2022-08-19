@@ -23,7 +23,7 @@ const QuestionPage = ({ authedUser, question, dispatch }) => {
         avatar,
         optionOne,
         optionTwo,
-        userCount,
+        voteCount,
         hasVoted,
     } = question;
 
@@ -69,15 +69,15 @@ const QuestionPage = ({ authedUser, question, dispatch }) => {
 
         const optionOneVoteCount = optionOne.votes.length;
         const optionTwoVoteCount = optionTwo.votes.length;
-        const optionOneVotePercentage = getPercentage(optionOneVoteCount, userCount);
-        const optionTwoVotePercentage = getPercentage(optionTwoVoteCount, userCount);
+        const optionOneVotePercentage = getPercentage(optionOneVoteCount, voteCount);
+        const optionTwoVotePercentage = getPercentage(optionTwoVoteCount, voteCount);
 
         return (
             <Card.Body className="d-flex justify-content-between">
                 <Card.Text className="mb-0">
                     { option === OPTION_ONE
-                        ? `${optionOneVoteCount}/${userCount} users ${optionOneVoteCount > 1 ? "have" : "has"} voted for this option.`
-                        : `${optionTwoVoteCount}/${userCount} users ${optionTwoVoteCount > 1 ? "have" : "has"} voted for this option.`
+                        ? `${optionOneVoteCount}/${voteCount} users ${optionOneVoteCount > 1 ? "have" : "has"} voted for this option.`
+                        : `${optionTwoVoteCount}/${voteCount} users ${optionTwoVoteCount > 1 ? "have" : "has"} voted for this option.`
                     }
                 </Card.Text>
                 <Card.Text className={ { "mb-0": true } }>
