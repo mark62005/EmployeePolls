@@ -81,7 +81,7 @@ const Login = ({ dispatch, users }) => {
             className={
                 "d-flex flex-column align-items-center justify-content-center"
             }
-            style={ { height: "100vh", width: "100vw" } }
+            style={ { height: "80vh", width: "100vw" } }
         >
             <Container fluid className="text-center w-50">
                 <h1>Login</h1>
