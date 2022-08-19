@@ -22,7 +22,7 @@ const QuestionCard = ({ question, authedUser }) => {
                 <Avatar avatarURL={ avatar } name={ name } />
                 <Card.Subtitle className="mt-2 fs-4">{ author }</Card.Subtitle>
                 <Card.Text className="mb-3 fs-6 text-black-50">{ formatDate(timestamp) }</Card.Text>
-                <LinkContainer to={ `/question/${qid}` }>
+                <LinkContainer to={ `/questions/${qid}` }>
                     <Button variant="primary">Show</Button>
                 </LinkContainer>
 
