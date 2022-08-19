@@ -43,7 +43,14 @@ const App = ({ dispatch, loading, authedUser }) => {
                         <Route path="/leaderboard" element={ <Leaderboard /> } />
                         <Route path="/question/:id" element={ <QuestionPage /> } />
                         <Route path="/new" element={ <NewQuestion /> } />
-                        <Route path="/login" element={ <Login /> } />
+                        <Route
+                            path="/login"
+                            element={
+                                authedUser === null
+                                    ? <Login />
+                                    : <Navigate replace to="/" />
+                            }
+                        />
 
                         <Route path="*" element={ <NotFound /> } />
                     </Routes>

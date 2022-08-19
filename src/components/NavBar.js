@@ -12,14 +12,35 @@ import Button from "react-bootstrap/Button";
 
 const NavBar = ({ authedUser, loading, router, dispatch }) => {
     const { location, navigate } = router;
-    const { name, avatarURL } = authedUser;
+    // const { name, avatarURL } = authedUser;
 
-    const handleOnClick = (e) => {
+    const handleLogIn = (e) => {
+        e.preventDefault();
+
+        navigate("/login");
+    };
+
+    const handleLogOut = (e) => {
         e.preventDefault();
 
         dispatch(setAuthedUser(null));
         navigate("/");
     };
+
+    const renderLogInOutButton = () => (
+        authedUser === null
+            ? location.pathname === "/login"
+                ? null
+                : (
+                    <Button variant="dark" onClick={ handleLogIn }>
+                        Login
+                    </Button>
+                ) : (
+                <Button variant="light" onClick={ handleLogOut }>
+                    Logout
+                </Button>
+            )
+    );
 
     return (
         <Navbar bg="light" expand="md" variant="light">
@@ -44,17 +65,19 @@ const NavBar = ({ authedUser, loading, router, dispatch }) => {
                         </Nav.Item>
                     </Nav>
                     <Nav className="align-items-center">
-                        { loading === true
+                        { authedUser === null
                             ? null
                             : <Avatar
-                                avatarURL={ avatarURL }
-                                name={ name }
+                                avatarURL={ authedUser.avatarURL }
+                                name={ authedUser.name }
                                 isOnNavBar={ true }
                             />
                         }
-                        <Navbar.Text className="fw-bold ms-2">{ name }</Navbar.Text>
+                        <Navbar.Text className="fw-bold m-2">
+                            { authedUser ? authedUser.name : "Guest" }
+                        </Navbar.Text>
                         <Nav.Item>
-                            <Button variant="light" onClick={ handleOnClick }>Logout</Button>
+                            { renderLogInOutButton() }
                         </Nav.Item>
                     </Nav>
                 </Navbar.Collapse>
@@ -64,7 +87,7 @@ const NavBar = ({ authedUser, loading, router, dispatch }) => {
 };
 
 NavBar.propTypes = {
-    authedUser: PropTypes.object.isRequired,
+    authedUser: PropTypes.object,
     loading: PropTypes.bool.isRequired,
     router: PropTypes.object.isRequired,
     dispatch: PropTypes.func.isRequired,
@@ -72,7 +95,7 @@ NavBar.propTypes = {
 
 const mapStateToProps = ({ authedUser, users }) => ({
     loading: authedUser === null,
-    authedUser: { ...users[ authedUser ] },
+    authedUser: authedUser ? { ...users[ authedUser ] } : null,
 });
 
 export default withRouter(connect(mapStateToProps)(NavBar));
