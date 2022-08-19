@@ -17,7 +17,6 @@ const NavBar = ({ authedUser, loading, router, dispatch }) => {
     const handleOnClick = (e) => {
         e.preventDefault();
 
-        localStorage.clear();
         dispatch(setAuthedUser(null));
         navigate("/");
     };

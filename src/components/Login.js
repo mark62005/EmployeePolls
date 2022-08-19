@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { connect } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { setAuthedUser } from "../actions/authedUser";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -10,6 +11,8 @@ import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
 
 const Login = ({ dispatch, users }) => {
+    const navigate = useNavigate();
+
     const [ userId, setUserId ] = useState("sarahedo");
     const [ password, setPassword ] = useState("");
     const [ isValidated, setIsValidated ] = useState(true);
@@ -24,7 +27,7 @@ const Login = ({ dispatch, users }) => {
         e.preventDefault();
 
         dispatch(setAuthedUser(userId));
-        localStorage.setItem("authedId", JSON.stringify(userId));
+        navigate("/");
     };
 
     // const handleInputChange = (e, field) => {

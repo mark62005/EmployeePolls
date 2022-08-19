@@ -15,15 +15,13 @@ import Login from "./Login";
 import NotFound from "./NotFound";
 
 const App = ({ dispatch, loading, authedUser }) => {
-    const authedId = JSON.parse(localStorage.getItem("authedId"));
-
     useEffect(() => {
-        if (authedId === null) {
+        if (authedUser === null) {
             dispatch(handleInitialData());
         } else {
-            dispatch(handleInitialData(true, authedId));
+            dispatch(handleInitialData(true, authedUser));
         }
-    }, [ authedId, dispatch ]);
+    }, [ authedUser, dispatch ]);
 
     return (
         <Fragment>
@@ -36,7 +34,7 @@ const App = ({ dispatch, loading, authedUser }) => {
                             exact
                             path="/"
                             element={
-                                authedId === null
+                                authedUser === null
                                     ? <Navigate replace to="/login" />
                                     : <Dashboard />
                             }
