@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import LoadingBar from "react-redux-loading-bar";
 import { handleInitialData } from "../actions/shared";
+import { PAGE_NOT_FOUND } from "../utils/helpers";
 import Dashboard from "./Dashboard";
 import QuestionPage from "./QuestionPage";
 import NewQuestion from "./NewQuestion";
@@ -41,7 +42,7 @@ const App = ({ dispatch, loading, authedUser }) => {
                         >
                         </Route>
                         <Route path="/leaderboard" element={ <Leaderboard /> } />
-                        <Route path="/question/:id" element={ <QuestionPage /> } />
+                        <Route path="/questions/:id" element={ <QuestionPage /> } />
                         <Route path="/add" element={ <NewQuestion /> } />
                         <Route
                             path="/login"
@@ -52,7 +53,7 @@ const App = ({ dispatch, loading, authedUser }) => {
                             }
                         />
 
-                        <Route path="*" element={ <NotFound /> } />
+                        <Route path="*" element={ <NotFound type={ PAGE_NOT_FOUND } /> } />
                     </Routes>
                 }
             </Container>

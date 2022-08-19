@@ -5,6 +5,7 @@ import { handleVoteQuestion } from "../actions/shared";
 import {
     OPTION_ONE,
     OPTION_TWO,
+    POLL_NOT_FOUND,
     withRouter,
     formatQuestion,
     getPercentage,
@@ -17,6 +18,20 @@ import Avatar from "./Avatar";
 import NotFound from "./NotFound";
 
 const QuestionPage = ({ authedUser, question, dispatch }) => {
+    const [ selected, setSelected ] = useState(
+        question === null
+            ? ""
+            : question.optionOne.votes.includes(authedUser)
+                ? OPTION_ONE
+                : question.optionTwo.votes.includes(authedUser)
+                    ? OPTION_TWO
+                    : ""
+    );
+
+    if (authedUser === null || question === null) {
+        return <NotFound type={ POLL_NOT_FOUND } />;
+    }
+
     const {
         qid,
         author,
@@ -26,18 +41,6 @@ const QuestionPage = ({ authedUser, question, dispatch }) => {
         voteCount,
         hasVoted,
     } = question;
-
-    const [ selected, setSelected ] = useState(
-        optionOne.votes.includes(authedUser)
-            ? OPTION_ONE
-            : optionTwo.votes.includes(authedUser)
-                ? OPTION_TWO
-                : ""
-    );
-
-    if (question === null) {
-        return <NotFound className="display-1 text-center mt-3" />;
-    }
 
     const handlePoll = (e) => {
         e.preventDefault();

@@ -6,6 +6,8 @@ import {
 
 export const OPTION_ONE = "optionOne";
 export const OPTION_TWO = "optionTwo";
+export const PAGE_NOT_FOUND = "Page Not Found";
+export const POLL_NOT_FOUND = "Poll Not Found";
 
 export function formatDate(timestamp) {
     const d = new Date(timestamp);
@@ -14,6 +16,25 @@ export function formatDate(timestamp) {
 }
 
 export function formatQuestion(question, author, authedUser, users) {
+    if (question === null) {
+        return {
+            qid: "not found",
+            author: "",
+            avatar: "",
+            optionOne: {
+                votes: [],
+                text: "",
+            },
+            optionTwo: {
+                votes: [],
+                text: "",
+            },
+            voteCount: 0,
+            userCount: 0,
+            hasVoted: false,
+        };
+    }
+
     const { id, timestamp, optionOne, optionTwo } = question;
 
     return {
