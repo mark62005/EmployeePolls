@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { withRouter } from "../utils/helpers";
+import { withRouter, handleLogIn } from "../utils/helpers";
 import { setAuthedUser } from "../actions/authedUser";
 import { LinkContainer } from "react-router-bootstrap";
 
@@ -14,12 +14,6 @@ const NavBar = ({ authedUser, loading, router, dispatch }) => {
     const { location, navigate } = router;
     // const { name, avatarURL } = authedUser;
 
-    const handleLogIn = (e) => {
-        e.preventDefault();
-
-        navigate("/login");
-    };
-
     const handleLogOut = (e) => {
         e.preventDefault();
 
@@ -32,7 +26,7 @@ const NavBar = ({ authedUser, loading, router, dispatch }) => {
             ? location.pathname === "/login"
                 ? null
                 : (
-                    <Button variant="dark" onClick={ handleLogIn }>
+                    <Button variant="dark" onClick={ (e) => handleLogIn(e, navigate) }>
                         Login
                     </Button>
                 ) : (

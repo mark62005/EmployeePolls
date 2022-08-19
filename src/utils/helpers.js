@@ -59,3 +59,9 @@ export function getPercentage(voteCount, userCount) {
 
     return parseFloat(percentage).toFixed(2);
 }
+
+export function handleLogIn(e, navigate) {
+    e.preventDefault();
+
+    navigate("/login");
+};
