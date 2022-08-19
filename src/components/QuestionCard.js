@@ -5,6 +5,7 @@ import { formatDate, formatQuestion } from "../utils/helpers";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Avatar from "./Avatar";
+import { LinkContainer } from "react-router-bootstrap";
 
 const QuestionCard = ({ question, authedUser }) => {
     const {
@@ -21,7 +22,10 @@ const QuestionCard = ({ question, authedUser }) => {
                 <Avatar avatarURL={ avatar } name={ name } />
                 <Card.Subtitle className="mt-2 fs-4">{ author }</Card.Subtitle>
                 <Card.Text className="mb-3 fs-6 text-black-50">{ formatDate(timestamp) }</Card.Text>
-                <Button variant="primary" href={ `/question/${qid}` }>Show</Button>
+                <LinkContainer to={ `/question/${qid}` }>
+                    <Button variant="primary">Show</Button>
+                </LinkContainer>
+
             </Card.Body>
         </Card>
     );
