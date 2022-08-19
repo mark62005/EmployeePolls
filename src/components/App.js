@@ -1,6 +1,6 @@
 import "../css/App.css";
 import { useEffect, Fragment } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import LoadingBar from "react-redux-loading-bar";
@@ -12,8 +12,9 @@ import Leaderboard from "./Leaderboard";
 import NavBar from "./NavBar";
 import Container from "react-bootstrap/Container";
 import Login from "./Login";
+import NotFound from "./NotFound";
 
-const App = ({ dispatch, loading }) => {
+const App = ({ dispatch, loading, authedUser }) => {
     const authedId = JSON.parse(localStorage.getItem("authedId"));
 
     useEffect(() => {
@@ -27,31 +28,30 @@ const App = ({ dispatch, loading }) => {
     return (
         <Fragment>
             <LoadingBar />
-            {
-                authedId === null
-                    ? (
-                        <Container>
-                            <Routes>
-                                <Route exact path="*" element={ <Login /> } />
-                            </Routes>
-                        </Container>
-                    )
-                    : (
-                        <Container>
-                            <NavBar />
-                            {
-                                loading === true ? null : (
-                                    <Routes>
-                                        <Route exact path="/" element={ <Dashboard /> } />
-                                        <Route path="/leaderboard" element={ <Leaderboard /> } />
-                                        <Route path="/question/:id" element={ <QuestionPage /> } />
-                                        <Route path="/new" element={ <NewQuestion /> } />
-                                    </Routes>
-                                )
+            <Container>
+                <NavBar />
+                {
+                    <Routes>
+                        <Route
+                            exact
+                            path="/"
+                            element={
+                                authedId === null
+                                    ? <Navigate replace to="/login" />
+                                    : <Dashboard />
                             }
-                        </Container>
-                    )
-            }
+                        >
+                        </Route>
+                        <Route path="/leaderboard" element={ <Leaderboard /> } />
+                        <Route path="/question/:id" element={ <QuestionPage /> } />
+                        <Route path="/new" element={ <NewQuestion /> } />
+                        <Route path="/login" element={ <Login /> } />
+
+                        <Route path="*" element={ <NotFound /> } />
+                    </Routes>
+                }
+            </Container>
+
         </Fragment>
     );
 };

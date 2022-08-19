@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { withRouter } from "../utils/helpers";
 import { setAuthedUser } from "../actions/authedUser";
+import { LinkContainer } from "react-router-bootstrap";
 
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -28,13 +29,19 @@ const NavBar = ({ authedUser, loading, router, dispatch }) => {
                 <Navbar.Collapse id="user-info-nav">
                     <Nav className="me-auto" activeKey={ location.pathname }>
                         <Nav.Item>
-                            <Nav.Link href="/">Home</Nav.Link>
+                            <LinkContainer to="/">
+                                <Nav.Link>Home</Nav.Link>
+                            </LinkContainer>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link href="/leaderboard">Leaderboard</Nav.Link>
+                            <LinkContainer to="/leaderboard">
+                                <Nav.Link>Leaderboard</Nav.Link>
+                            </LinkContainer>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link href="/new">New</Nav.Link>
+                            <LinkContainer to="/new">
+                                <Nav.Link>New</Nav.Link>
+                            </LinkContainer>
                         </Nav.Item>
                     </Nav>
                     <Nav className="align-items-center">
