@@ -16,12 +16,6 @@ import Button from "react-bootstrap/Button";
 import Avatar from "./Avatar";
 
 const QuestionPage = ({ authedUser, question, dispatch }) => {
-    const [ selected, setSelected ] = useState("");
-
-    if (question === null) {
-        return <p className="display-1 text-center mt-3">Sorry, this poll doesn't exist.</p>;
-    }
-
     const {
         qid,
         author,
@@ -31,6 +25,18 @@ const QuestionPage = ({ authedUser, question, dispatch }) => {
         userCount,
         hasVoted,
     } = question;
+
+    const [ selected, setSelected ] = useState(
+        optionOne.votes.includes(authedUser)
+            ? OPTION_ONE
+            : optionTwo.votes.includes(authedUser)
+                ? OPTION_TWO
+                : ""
+    );
+
+    if (question === null) {
+        return <p className="display-1 text-center mt-3">Sorry, this poll doesn't exist.</p>;
+    }
 
     const handlePoll = (e) => {
         e.preventDefault();
@@ -120,7 +126,7 @@ const QuestionPage = ({ authedUser, question, dispatch }) => {
 };
 
 QuestionPage.propTypes = {
-    authedUser: PropTypes.string.isRequired,
+    authedUser: PropTypes.string,
     question: PropTypes.object,
     dispatch: PropTypes.func.isRequired,
 };
