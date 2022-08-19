@@ -14,6 +14,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Avatar from "./Avatar";
+import NotFound from "./NotFound";
 
 const QuestionPage = ({ authedUser, question, dispatch }) => {
     const {
@@ -35,7 +36,7 @@ const QuestionPage = ({ authedUser, question, dispatch }) => {
     );
 
     if (question === null) {
-        return <p className="display-1 text-center mt-3">Sorry, this poll doesn't exist.</p>;
+        return <NotFound className="display-1 text-center mt-3" />;
     }
 
     const handlePoll = (e) => {
