@@ -4,6 +4,21 @@ This is my implementation of the final assessment project for Udacity's React & 
 
 Users will be able to answer polls, see which polls they haven’t answered, see how other people have voted, post polls, and see the ranking of users on the leaderboard.
 
+### Login Page
+<img width="1440" alt="Screen Shot 2022-08-14 at 2 35 42 PM" src="https://user-images.githubusercontent.com/73043578/184555840-197463d7-7efe-43b2-9e07-c66469aee2ad.png">
+
+### Dashboard
+<img width="1440" alt="Screen Shot 2022-08-14 at 2 35 53 PM" src="https://user-images.githubusercontent.com/73043578/184555842-dd8ff22f-2c2c-4961-89ee-9858b34607d6.png">
+
+### Poll Page
+<img width="1440" alt="Screen Shot 2022-08-14 at 2 36 24 PM" src="https://user-images.githubusercontent.com/73043578/184555847-3d0866a2-9e23-4d2c-95ff-69d2b1da1905.png">
+
+### Leaderboard
+<img width="1440" alt="Screen Shot 2022-08-14 at 2 36 02 PM" src="https://user-images.githubusercontent.com/73043578/184555852-5dfefd54-b063-4d2c-a5fd-32555daa7f87.png">
+
+### Create a New Poll
+<img width="1440" alt="Screen Shot 2022-08-14 at 2 36 10 PM" src="https://user-images.githubusercontent.com/73043578/184555855-f8669fd4-11c8-4514-afe1-4bce80cc1444.png">
+
 
 ## Data
 
