@@ -53,7 +53,7 @@ const NavBar = ({ authedUser, loading, router, dispatch }) => {
                             </LinkContainer>
                         </Nav.Item>
                         <Nav.Item>
-                            <LinkContainer to="/new">
+                            <LinkContainer to="/add">
                                 <Nav.Link>New</Nav.Link>
                             </LinkContainer>
                         </Nav.Item>
