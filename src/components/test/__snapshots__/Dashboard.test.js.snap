@@ -8,59 +8,128 @@ Object {
       <div
         class="p-3 container"
       >
+        <ul
+          class="nav nav-tabs"
+          role="tablist"
+        >
+          <li
+            class="nav-item"
+            role="presentation"
+          >
+            <button
+              aria-controls="react-aria5426571005-1-tabpane-new"
+              aria-selected="true"
+              class="nav-link active"
+              data-rr-ui-event-key="new"
+              id="react-aria5426571005-1-tab-new"
+              role="tab"
+              type="button"
+            >
+              Unanswered Questions
+            </button>
+          </li>
+          <li
+            class="nav-item"
+            role="presentation"
+          >
+            <button
+              aria-controls="react-aria5426571005-1-tabpane-done"
+              aria-selected="false"
+              class="nav-link"
+              data-rr-ui-event-key="done"
+              id="react-aria5426571005-1-tab-done"
+              role="tab"
+              tabindex="-1"
+              type="button"
+            >
+              Answered Questions
+            </button>
+          </li>
+          <li
+            class="nav-item"
+            role="presentation"
+          >
+            <button
+              aria-controls="react-aria5426571005-1-tabpane-all"
+              aria-selected="false"
+              class="nav-link"
+              data-rr-ui-event-key="all"
+              id="react-aria5426571005-1-tab-all"
+              role="tab"
+              tabindex="-1"
+              type="button"
+            >
+              All
+            </button>
+          </li>
+        </ul>
         <div
-          class="my-4 container"
+          class="tab-content"
         >
           <div
-            class="border border-2 row"
+            aria-labelledby="react-aria5426571005-1-tab-new"
+            class="fade tab-pane active show"
+            id="react-aria5426571005-1-tabpane-new"
+            role="tabpanel"
           >
             <div
-              class="col"
-            >
-              <h2
-                class="display-6 p-2"
-              >
-                New Questions
-              </h2>
-            </div>
-          </div>
-          <div
-            class="border border-2 border-top-0 row"
-          >
-            <div
-              class="col"
+              class="container"
             >
               <div
-                class="g-4 p-3 row row-cols-lg-3 row-cols-md-2"
-              />
-            </div>
-          </div>
-        </div>
-        <div
-          class="my-4 container"
-        >
-          <div
-            class="border border-2 row"
-          >
-            <div
-              class="col"
-            >
-              <h2
-                class="display-6 p-2"
+                class="border border-1 border-top-0 px-3 py-4 row"
               >
-                Done
-              </h2>
+                <div
+                  class="col"
+                >
+                  <div
+                    class="g-4 p-3 row row-cols-lg-3 row-cols-md-2"
+                  />
+                </div>
+              </div>
             </div>
           </div>
           <div
-            class="border border-2 border-top-0 row"
+            aria-labelledby="react-aria5426571005-1-tab-done"
+            class="fade tab-pane"
+            id="react-aria5426571005-1-tabpane-done"
+            role="tabpanel"
           >
             <div
-              class="col"
+              class="container"
             >
               <div
-                class="g-4 p-3 row row-cols-lg-3 row-cols-md-2"
-              />
+                class="border border-1 border-top-0 px-3 py-4 row"
+              >
+                <div
+                  class="col"
+                >
+                  <div
+                    class="g-4 p-3 row row-cols-lg-3 row-cols-md-2"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            aria-labelledby="react-aria5426571005-1-tab-all"
+            class="fade tab-pane"
+            id="react-aria5426571005-1-tabpane-all"
+            role="tabpanel"
+          >
+            <div
+              class="container"
+            >
+              <div
+                class="border border-1 border-top-0 px-3 py-4 row"
+              >
+                <div
+                  class="col"
+                >
+                  <div
+                    class="g-4 p-3 row row-cols-lg-3 row-cols-md-2"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -71,59 +140,128 @@ Object {
     <div
       class="p-3 container"
     >
+      <ul
+        class="nav nav-tabs"
+        role="tablist"
+      >
+        <li
+          class="nav-item"
+          role="presentation"
+        >
+          <button
+            aria-controls="react-aria5426571005-1-tabpane-new"
+            aria-selected="true"
+            class="nav-link active"
+            data-rr-ui-event-key="new"
+            id="react-aria5426571005-1-tab-new"
+            role="tab"
+            type="button"
+          >
+            Unanswered Questions
+          </button>
+        </li>
+        <li
+          class="nav-item"
+          role="presentation"
+        >
+          <button
+            aria-controls="react-aria5426571005-1-tabpane-done"
+            aria-selected="false"
+            class="nav-link"
+            data-rr-ui-event-key="done"
+            id="react-aria5426571005-1-tab-done"
+            role="tab"
+            tabindex="-1"
+            type="button"
+          >
+            Answered Questions
+          </button>
+        </li>
+        <li
+          class="nav-item"
+          role="presentation"
+        >
+          <button
+            aria-controls="react-aria5426571005-1-tabpane-all"
+            aria-selected="false"
+            class="nav-link"
+            data-rr-ui-event-key="all"
+            id="react-aria5426571005-1-tab-all"
+            role="tab"
+            tabindex="-1"
+            type="button"
+          >
+            All
+          </button>
+        </li>
+      </ul>
       <div
-        class="my-4 container"
+        class="tab-content"
       >
         <div
-          class="border border-2 row"
+          aria-labelledby="react-aria5426571005-1-tab-new"
+          class="fade tab-pane active show"
+          id="react-aria5426571005-1-tabpane-new"
+          role="tabpanel"
         >
           <div
-            class="col"
-          >
-            <h2
-              class="display-6 p-2"
-            >
-              New Questions
-            </h2>
-          </div>
-        </div>
-        <div
-          class="border border-2 border-top-0 row"
-        >
-          <div
-            class="col"
+            class="container"
           >
             <div
-              class="g-4 p-3 row row-cols-lg-3 row-cols-md-2"
-            />
-          </div>
-        </div>
-      </div>
-      <div
-        class="my-4 container"
-      >
-        <div
-          class="border border-2 row"
-        >
-          <div
-            class="col"
-          >
-            <h2
-              class="display-6 p-2"
+              class="border border-1 border-top-0 px-3 py-4 row"
             >
-              Done
-            </h2>
+              <div
+                class="col"
+              >
+                <div
+                  class="g-4 p-3 row row-cols-lg-3 row-cols-md-2"
+                />
+              </div>
+            </div>
           </div>
         </div>
         <div
-          class="border border-2 border-top-0 row"
+          aria-labelledby="react-aria5426571005-1-tab-done"
+          class="fade tab-pane"
+          id="react-aria5426571005-1-tabpane-done"
+          role="tabpanel"
         >
           <div
-            class="col"
+            class="container"
           >
             <div
-              class="g-4 p-3 row row-cols-lg-3 row-cols-md-2"
-            />
+              class="border border-1 border-top-0 px-3 py-4 row"
+            >
+              <div
+                class="col"
+              >
+                <div
+                  class="g-4 p-3 row row-cols-lg-3 row-cols-md-2"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          aria-labelledby="react-aria5426571005-1-tab-all"
+          class="fade tab-pane"
+          id="react-aria5426571005-1-tabpane-all"
+          role="tabpanel"
+        >
+          <div
+            class="container"
+          >
+            <div
+              class="border border-1 border-top-0 px-3 py-4 row"
+            >
+              <div
+                class="col"
+              >
+                <div
+                  class="g-4 p-3 row row-cols-lg-3 row-cols-md-2"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
