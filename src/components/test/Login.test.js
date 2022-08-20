@@ -8,7 +8,7 @@ import reducer from "../../reducers";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import { MemoryRouter } from "react-router-dom";
-import Login from "../Login";
+import Login from "../pages/Login";
 
 describe("Login", () => {
     var mockStore;

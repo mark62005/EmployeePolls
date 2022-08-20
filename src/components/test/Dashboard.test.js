@@ -4,7 +4,7 @@ import reducer from "../../reducers";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import { MemoryRouter } from "react-router-dom";
-import Dashboard from "../Dashboard";
+import Dashboard from "../pages/Dashboard";
 
 describe("Dashboard", () => {
     var mockStore = configureStore({ reducer, middleware: [ thunk ] });

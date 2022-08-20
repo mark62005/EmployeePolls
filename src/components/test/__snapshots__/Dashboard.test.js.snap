@@ -17,11 +17,11 @@ Object {
             role="presentation"
           >
             <button
-              aria-controls="react-aria5426571005-1-tabpane-new"
+              aria-controls="react-aria4716161682-1-tabpane-new"
               aria-selected="true"
               class="nav-link active"
               data-rr-ui-event-key="new"
-              id="react-aria5426571005-1-tab-new"
+              id="react-aria4716161682-1-tab-new"
               role="tab"
               type="button"
             >
@@ -33,11 +33,11 @@ Object {
             role="presentation"
           >
             <button
-              aria-controls="react-aria5426571005-1-tabpane-done"
+              aria-controls="react-aria4716161682-1-tabpane-done"
               aria-selected="false"
               class="nav-link"
               data-rr-ui-event-key="done"
-              id="react-aria5426571005-1-tab-done"
+              id="react-aria4716161682-1-tab-done"
               role="tab"
               tabindex="-1"
               type="button"
@@ -50,11 +50,11 @@ Object {
             role="presentation"
           >
             <button
-              aria-controls="react-aria5426571005-1-tabpane-all"
+              aria-controls="react-aria4716161682-1-tabpane-all"
               aria-selected="false"
               class="nav-link"
               data-rr-ui-event-key="all"
-              id="react-aria5426571005-1-tab-all"
+              id="react-aria4716161682-1-tab-all"
               role="tab"
               tabindex="-1"
               type="button"
@@ -67,9 +67,9 @@ Object {
           class="tab-content"
         >
           <div
-            aria-labelledby="react-aria5426571005-1-tab-new"
+            aria-labelledby="react-aria4716161682-1-tab-new"
             class="fade tab-pane active show"
-            id="react-aria5426571005-1-tabpane-new"
+            id="react-aria4716161682-1-tabpane-new"
             role="tabpanel"
           >
             <div
@@ -89,9 +89,9 @@ Object {
             </div>
           </div>
           <div
-            aria-labelledby="react-aria5426571005-1-tab-done"
+            aria-labelledby="react-aria4716161682-1-tab-done"
             class="fade tab-pane"
-            id="react-aria5426571005-1-tabpane-done"
+            id="react-aria4716161682-1-tabpane-done"
             role="tabpanel"
           >
             <div
@@ -111,9 +111,9 @@ Object {
             </div>
           </div>
           <div
-            aria-labelledby="react-aria5426571005-1-tab-all"
+            aria-labelledby="react-aria4716161682-1-tab-all"
             class="fade tab-pane"
-            id="react-aria5426571005-1-tabpane-all"
+            id="react-aria4716161682-1-tabpane-all"
             role="tabpanel"
           >
             <div
@@ -149,11 +149,11 @@ Object {
           role="presentation"
         >
           <button
-            aria-controls="react-aria5426571005-1-tabpane-new"
+            aria-controls="react-aria4716161682-1-tabpane-new"
             aria-selected="true"
             class="nav-link active"
             data-rr-ui-event-key="new"
-            id="react-aria5426571005-1-tab-new"
+            id="react-aria4716161682-1-tab-new"
             role="tab"
             type="button"
           >
@@ -165,11 +165,11 @@ Object {
           role="presentation"
         >
           <button
-            aria-controls="react-aria5426571005-1-tabpane-done"
+            aria-controls="react-aria4716161682-1-tabpane-done"
             aria-selected="false"
             class="nav-link"
             data-rr-ui-event-key="done"
-            id="react-aria5426571005-1-tab-done"
+            id="react-aria4716161682-1-tab-done"
             role="tab"
             tabindex="-1"
             type="button"
@@ -182,11 +182,11 @@ Object {
           role="presentation"
         >
           <button
-            aria-controls="react-aria5426571005-1-tabpane-all"
+            aria-controls="react-aria4716161682-1-tabpane-all"
             aria-selected="false"
             class="nav-link"
             data-rr-ui-event-key="all"
-            id="react-aria5426571005-1-tab-all"
+            id="react-aria4716161682-1-tab-all"
             role="tab"
             tabindex="-1"
             type="button"
@@ -199,9 +199,9 @@ Object {
         class="tab-content"
       >
         <div
-          aria-labelledby="react-aria5426571005-1-tab-new"
+          aria-labelledby="react-aria4716161682-1-tab-new"
           class="fade tab-pane active show"
-          id="react-aria5426571005-1-tabpane-new"
+          id="react-aria4716161682-1-tabpane-new"
           role="tabpanel"
         >
           <div
@@ -221,9 +221,9 @@ Object {
           </div>
         </div>
         <div
-          aria-labelledby="react-aria5426571005-1-tab-done"
+          aria-labelledby="react-aria4716161682-1-tab-done"
           class="fade tab-pane"
-          id="react-aria5426571005-1-tabpane-done"
+          id="react-aria4716161682-1-tabpane-done"
           role="tabpanel"
         >
           <div
@@ -243,9 +243,9 @@ Object {
           </div>
         </div>
         <div
-          aria-labelledby="react-aria5426571005-1-tab-all"
+          aria-labelledby="react-aria4716161682-1-tab-all"
           class="fade tab-pane"
-          id="react-aria5426571005-1-tabpane-all"
+          id="react-aria4716161682-1-tabpane-all"
           role="tabpanel"
         >
           <div
