@@ -92,8 +92,10 @@ function getFilteredQuestions(questions, authedUser, category) {
             return Object.values(questions).filter(
                 (q) => q.optionOne.votes.includes(authedUser) || q.optionTwo.votes.includes(authedUser)
             );
-        default:
+        case "all":
             return Object.values(questions);
+        default:
+            return [];
     }
 }
 
