@@ -40,7 +40,7 @@ const NewQuestion = ({ dispatch, authedUser }) => {
     };
 
     const renderNewQuestionForm = () => (
-        <Card className="text-center my-2">
+        <Card className="text-center my-2 w-75">
             <Card.Header>Would You Rather</Card.Header>
             <Card.Body>
                 <Card.Title>Create Your Own Poll</Card.Title>
@@ -83,12 +83,7 @@ const NewQuestion = ({ dispatch, authedUser }) => {
     const renderNewQuestion = () => (
         authedUser === null
             ? (
-                <Container
-                    className={
-                        "d-flex flex-column align-items-center justify-content-center"
-                    }
-                    style={ { height: "80vh", width: "100vw" } }
-                >
+                <Container>
                     <Alert variant="info">Please login to create a new poll.</Alert>
                     <Button
                         variant="primary"
@@ -102,7 +97,12 @@ const NewQuestion = ({ dispatch, authedUser }) => {
     );
 
     return (
-        <Container className="p-4">
+        <Container
+            className={
+                "d-flex flex-column align-items-center justify-content-center"
+            }
+            style={ { height: "80vh", width: "100vw" } }
+        >
             { renderNewQuestion() }
         </Container>
     );
