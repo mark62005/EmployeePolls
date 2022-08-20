@@ -1,50 +1,100 @@
 import PropTypes from "prop-types";
+import { useState } from "react";
 import { connect } from "react-redux";
 import { sortQuestionsIdByTimestamp } from "../utils/helpers";
 import QuestionList from "./QuestionList";
 import Container from "react-bootstrap/Container";
+import Tabs from "react-bootstrap/Tabs";
+import Tab from "react-bootstrap/Tab";
 
-const Dashboard = ({ authedUser, newQuestionIds, doneQuestionIds }) => {
-    const categories = [ "new", "done" ];
+const Dashboard = ({ allQuestionIds, newQuestionIds, doneQuestionIds }) => {
+    const [ tabKey, setTabKey ] = useState("new");
+
+    const CATEGORIES = [ "new", "done", "all" ];
+
+    const handleSelect = (eventKey) => {
+        setTabKey(eventKey);
+    };
+
+    const getListTitle = (category) => {
+        switch (category) {
+            case "new":
+                return "Unanswered Questions";
+            case "done":
+                return "Answered Questions";
+            case "all":
+                return "All";
+            default:
+                return "";
+        }
+    };
+
+    const renderQuestionList = (category) => {
+        switch (category) {
+            case "new":
+                return <QuestionList
+                    key={ category }
+                    category={ category }
+                    questionIds={ newQuestionIds }
+                />;
+            case "done":
+                return <QuestionList
+                    key={ category }
+                    category={ category }
+                    questionIds={ doneQuestionIds }
+                />;
+            case "all":
+                return <QuestionList
+                    key={ category }
+                    category={ category }
+                    questionIds={ allQuestionIds }
+                />;
+            default:
+                return null;
+        }
+    };
 
     return (
         <Container className="p-3">
-            {
-                categories.map((category) => (
-                    category === "new"
-                        ? <QuestionList
+            <Tabs
+                activeKey={ tabKey }
+                onSelect={ handleSelect }
+            >
+                {
+                    CATEGORIES.map((category) => (
+                        <Tab
                             key={ category }
-                            category={ category }
-                            questionIds={ newQuestionIds }
-                        />
-                        : <QuestionList
-                            key={ category }
-                            category={ category }
-                            questionIds={ doneQuestionIds }
-                        />
-                ))
-            }
+                            eventKey={ category }
+                            title={ getListTitle(category) }
+                        >
+                            { renderQuestionList(category) }
+                        </Tab>
+                    ))
+                }
+            </Tabs>
         </Container>
     );
 };
 
 Dashboard.propTypes = {
-    authedUser: PropTypes.string,
+    allQuestionIds: PropTypes.array.isRequired,
     newQuestionIds: PropTypes.array.isRequired,
     doneQuestionIds: PropTypes.array.isRequired,
 };
 
-function getFilteredQuestions(questions, authedUser, type) {
-    if (type === "new") {
-        return Object.values(questions).filter(
-            (q) => !q.optionOne.votes.includes(authedUser) && !q.optionTwo.votes.includes(authedUser)
-        );
+function getFilteredQuestions(questions, authedUser, category) {
+    switch (category) {
+        case "new":
+            return Object.values(questions).filter(
+                (q) => !q.optionOne.votes.includes(authedUser) && !q.optionTwo.votes.includes(authedUser)
+            );
+        case "done":
+            return Object.values(questions).filter(
+                (q) => q.optionOne.votes.includes(authedUser) || q.optionTwo.votes.includes(authedUser)
+            );
+        default:
+            return Object.values(questions);
     }
-
-    // case "done"
-    return Object.values(questions).filter(
-        (q) => q.optionOne.votes.includes(authedUser) || q.optionTwo.votes.includes(authedUser)
-    );
 }
 
 const mapStateToProps = ({ authedUser, questions }) => {
@@ -53,6 +103,7 @@ const mapStateToProps = ({ authedUser, questions }) => {
 
     return {
         authedUser,
+        allQuestionIds: sortQuestionsIdByTimestamp(Object.values(questions)),
         newQuestionIds: sortQuestionsIdByTimestamp(newQuestions),
         doneQuestionIds: sortQuestionsIdByTimestamp(doneQuestions),
     };

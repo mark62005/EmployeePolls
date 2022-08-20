@@ -2,20 +2,13 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import QuestionCard from "./QuestionCard";
 import Container from "react-bootstrap/Container";
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
-const QuestionList = ({ category, questionIds }) => {
+const QuestionList = ({ questionIds }) => {
     return (
-        <Container className="my-4">
-            <Row className="border border-2">
-                <Col>
-                    <h2 className="display-6 p-2">
-                        { category === "new" ? "New Questions" : "Done" }
-                    </h2>
-                </Col>
-            </Row>
-            <Row className="border border-2 border-top-0">
+        <Container>
+            <Row className="border border-1 border-top-0 px-3 py-4">
                 <Col className="">
                     <Row md={ 2 } lg={ 3 } className="g-4 p-3">
                         {
@@ -33,7 +26,6 @@ const QuestionList = ({ category, questionIds }) => {
 };
 
 QuestionList.propTypes = {
-    category: PropTypes.string.isRequired,
     questionIds: PropTypes.array.isRequired,
 };
 
