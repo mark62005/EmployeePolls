@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { connect } from "react-redux";
-import { sortQuestionsIdByTimestamp } from "../utils/helpers";
-import QuestionList from "./QuestionList";
+import { sortQuestionsIdByTimestamp } from "../../utils/helpers";
+import QuestionList from "../QuestionList";
 import Container from "react-bootstrap/Container";
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";

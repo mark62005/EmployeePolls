@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { connect } from "react-redux";
-import { handleVoteQuestion } from "../actions/shared";
+import { handleVoteQuestion } from "../../actions/shared";
 import {
     OPTION_ONE,
     OPTION_TWO,
@@ -9,12 +9,12 @@ import {
     withRouter,
     formatQuestion,
     getPercentage,
-} from "../utils/helpers";
+} from "../../utils/helpers";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import Avatar from "./Avatar";
+import Avatar from "../Avatar";
 import NotFound from "./NotFound";
 
 const QuestionPage = ({ authedUser, question, dispatch }) => {

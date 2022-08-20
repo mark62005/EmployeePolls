@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Table from "react-bootstrap/Table";
 import Container from "react-bootstrap/Container";
-import Avatar from "./Avatar";
+import Avatar from "../Avatar";
 
 const Leaderboard = ({ users }) => {
     return (

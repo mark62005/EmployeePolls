@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { PAGE_NOT_FOUND, POLL_NOT_FOUND } from "../utils/helpers";
+import { PAGE_NOT_FOUND, POLL_NOT_FOUND } from "../../utils/helpers";
 import Container from "react-bootstrap/Container";
 
 const NotFound = ({ type = PAGE_NOT_FOUND }) => {

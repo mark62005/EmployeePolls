@@ -6,14 +6,14 @@ import PropTypes from "prop-types";
 import LoadingBar from "react-redux-loading-bar";
 import { handleInitialData } from "../actions/shared";
 import { PAGE_NOT_FOUND } from "../utils/helpers";
-import Dashboard from "./Dashboard";
-import QuestionPage from "./QuestionPage";
-import NewQuestion from "./NewQuestion";
-import Leaderboard from "./Leaderboard";
+import Dashboard from "./pages/Dashboard";
+import QuestionPage from "./pages/QuestionPage";
+import NewQuestion from "./pages/NewQuestion";
+import Leaderboard from "./pages/Leaderboard";
+import NotFound from "./pages/NotFound";
+import Login from "./pages/Login";
 import NavBar from "./NavBar";
 import Container from "react-bootstrap/Container";
-import Login from "./Login";
-import NotFound from "./NotFound";
 
 const App = ({ dispatch, loading, authedUser }) => {
     useEffect(() => {
