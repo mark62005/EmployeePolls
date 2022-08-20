@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { connect } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { setAuthedUser } from "../../actions/authedUser";
+import { useNavigate, useLocation } from "react-router-dom";
+import useAuth from "../../auth/useAuth";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -12,22 +12,26 @@ import Alert from "react-bootstrap/Alert";
 
 const Login = ({ dispatch, users }) => {
     const navigate = useNavigate();
+    const { login } = useAuth(dispatch);
+    const location = useLocation();
 
     const [ userId, setUserId ] = useState("sarahedo");
-    const [ password, setPassword ] = useState("");
-    const [ isValidated, setIsValidated ] = useState(true);
-    const [ errorMessage, setErrorMessage ] = useState("");
+    // const [ password, setPassword ] = useState("");
+    // const [ isValidated, setIsValidated ] = useState(true);
+    // const [ errorMessage, setErrorMessage ] = useState("");
 
     const handleValueChange = (e) => {
         e.preventDefault();
         setUserId(e.target.value);
     };
 
-    const handleSubmit = (e) => {
+    const handleLogIn = (e) => {
         e.preventDefault();
 
-        dispatch(setAuthedUser(userId));
-        navigate("/");
+        login(userId).then((res) => {
+            console.log("res: ", res);
+            navigate(location.state?.path || "/");
+        });
     };
 
     // const handleInputChange = (e, field) => {
@@ -99,7 +103,7 @@ const Login = ({ dispatch, users }) => {
                 </Form.Select>
                 <Button
                     variant="primary"
-                    onClick={ handleSubmit }
+                    onClick={ handleLogIn }
                     data-testid="sign-in-button"
                 >
                     SIGN IN

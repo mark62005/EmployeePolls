@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import useAuth from "../auth/useAuth";
 import { withRouter, handleLogIn } from "../utils/helpers";
-import { setAuthedUser } from "../actions/authedUser";
 import { LinkContainer } from "react-router-bootstrap";
 
 import Container from 'react-bootstrap/Container';
@@ -10,15 +10,16 @@ import Navbar from 'react-bootstrap/Navbar';
 import Avatar from "./Avatar";
 import Button from "react-bootstrap/Button";
 
-const NavBar = ({ authedUser, loading, router, dispatch }) => {
+const NavBar = ({ authedUser, router, dispatch }) => {
     const { location, navigate } = router;
-    // const { name, avatarURL } = authedUser;
+    const { logout } = useAuth(dispatch);
 
     const handleLogOut = (e) => {
         e.preventDefault();
 
-        dispatch(setAuthedUser(null));
-        navigate("/");
+        logout().then(() => {
+            navigate("/");
+        });
     };
 
     const renderLogInOutButton = () => (

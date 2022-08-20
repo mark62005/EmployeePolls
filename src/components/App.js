@@ -1,6 +1,6 @@
 import "../css/App.css";
 import { useEffect, Fragment } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import LoadingBar from "react-redux-loading-bar";
@@ -15,9 +15,23 @@ import Login from "./pages/Login";
 import NavBar from "./NavBar";
 import Container from "react-bootstrap/Container";
 
+const RequireAuth = ({ children, authedUser }) => {
+    const location = useLocation();
+
+    return authedUser !== null
+        ? children
+        : (
+            <Navigate
+                to="/login"
+                replace
+                state={ { path: location.pathname } }
+            />
+        );
+};
+
 const App = ({ dispatch, loading, authedUser }) => {
     useEffect(() => {
-        if (authedUser === null) {
+        if (authedUser === false) {
             dispatch(handleInitialData());
         } else {
             dispatch(handleInitialData(true, authedUser));
@@ -35,29 +49,45 @@ const App = ({ dispatch, loading, authedUser }) => {
                             exact
                             path="/"
                             element={
-                                authedUser === null
-                                    ? <Navigate replace to="/login" />
-                                    : <Dashboard />
+                                <RequireAuth authedUser={ authedUser }>
+                                    <Dashboard />
+                                </RequireAuth>
                             }
                         >
                         </Route>
-                        <Route path="/leaderboard" element={ <Leaderboard /> } />
-                        <Route path="/questions/:id" element={ <QuestionPage /> } />
-                        <Route path="/add" element={ <NewQuestion /> } />
+                        <Route
+                            path="/leaderboard"
+                            element={
+                                <RequireAuth authedUser={ authedUser }>
+                                    <Leaderboard />
+                                </RequireAuth>
+                            }
+                        />
+                        <Route
+                            path="/questions/:id"
+                            element={
+                                <RequireAuth authedUser={ authedUser }>
+                                    <QuestionPage />
+                                </RequireAuth>
+                            }
+                        />
+                        <Route
+                            path="/add"
+                            element={
+                                <RequireAuth authedUser={ authedUser }>
+                                    <NewQuestion />
+                                </RequireAuth>
+                            }
+                        />
                         <Route
                             path="/login"
-                            element={
-                                authedUser === null
-                                    ? <Login />
-                                    : <Navigate replace to="/" />
-                            }
+                            element={ <Login /> }
                         />
 
                         <Route path="*" element={ <NotFound type={ PAGE_NOT_FOUND } /> } />
                     </Routes>
                 }
             </Container>
-
         </Fragment>
     );
 };
