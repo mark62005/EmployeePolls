@@ -13,7 +13,7 @@ const store = configureStore({ reducer, middleware });
 
 root.render(
     <Provider store={ store }>
-        <BrowserRouter>
+        <BrowserRouter basename="/EmployeePolls">
             <App />
         </BrowserRouter>
     </Provider>
