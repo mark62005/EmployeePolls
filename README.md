@@ -140,3 +140,6 @@ Your code will talk to the database via 4 methods:
 | qid | String | The id of the question that was answered|
 | answer | String | The option the user selected. The value should be either `"optionOne"` or `"optionTwo"`|
 
+
+## Author
+Mark Wong is the author of this applicaiton.
